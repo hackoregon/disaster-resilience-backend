@@ -12,7 +12,7 @@ DOCKER related:
 * bin directory - directory to store your startup and entrypoint scripts.
 * Backups directory - directory will store any database backups to restore into the local database Container, also restore script
 * Docker-Compose Files -  4 files which compose containers and networking for each environment:
-    * local-docker-compose.yml - This is a local dev environment, will spin up a local api container connecting with a local db. It will run the Django Dev Server with the DEBUG variable set to True.
+    * development-docker-compose.yml - This is a local dev environment, will spin up a local api container connecting with a local db. It will run the Django Dev Server with the DEBUG variable set to True.
     * staging-docker-compose.yml - This is set to run a production-like environment, creating a api container running with gunicorn server, and green database pooling. It removes the local development from the stack, connecting to a remote database for which the variables/creds are entered into the staging vars in the .env file
     * travis-docker-compose.yml - Deploy version of docker-compose file
     * testing-docker-compose.yml - configures testing version of the API
@@ -60,4 +60,4 @@ DEVELOPMENT_POSTGRES_PASSWORD=sit-down-c0mic
 DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 ```
 
-3. 
+3.
