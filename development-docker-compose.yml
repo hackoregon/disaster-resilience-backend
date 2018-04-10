@@ -21,15 +21,6 @@ services:
       - "8000:8000"
     depends_on:
       - db_development
-    # environment:
-    #   - PROJECT_NAME
-    #   - DEBUG=True
-    #   - POSTGRES_USER=dbsuper
-    #   - POSTGRES_NAME=dead_songs
-    #   - POSTGRES_HOST=db_development
-    #   - POSTGRES_PORT=5432
-    #   - POSTGRES_PASSWORD=sit-down-c0mic
-    #   - DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
     environment:
       - PROJECT_NAME
       - DEBUG=True
@@ -38,4 +29,4 @@ services:
       - POSTGRES_HOST=${DEVELOPMENT_POSTGRES_HOST}
       - POSTGRES_PORT=${DEVELOPMENT_POSTGRES_PORT}
       - POSTGRES_PASSWORD=${DEVELOPMENT_POSTGRES_PASSWORD}
-      - DJANGO_SECRET_KEY
+      - DJANGO_SECRET_KEY=${DEVELOPMENT_DJANGO_SECRET_KEY}

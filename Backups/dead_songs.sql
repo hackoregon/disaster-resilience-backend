@@ -13,14 +13,6 @@ drop role if exists sampleuser;
 
 CREATE DATABASE dead_songs;
 
-CREATE USER sampleuser WITH PASSWORD 'sit-down-c0mic';
-
-ALTER ROLE sampleuser SET client_encoding TO 'utf8';
-ALTER ROLE sampleuser SET default_transaction_isolation TO 'read committed';
-ALTER ROLE sampleuser SET timezone TO 'UTC';
-
-GRANT ALL PRIVILEGES ON DATABASE dead_songs TO sampleuser;
-
 \connect dead_songs;
 
 CREATE TABLE api_song (
