@@ -12,7 +12,7 @@ DOCKER related:
 * bin directory - directory to store your startup and entrypoint scripts.
 * Backups directory - directory will store any database backups to restore into the local database Container, also restore script
 * Docker-Compose Files -  4 files which compose containers and networking for each environment:
-    * local-docker-compose.yml - This is a local dev environment, will spin up a local api container connecting with a local db. It will run the Django Dev Server with the DEBUG variable set to True.
+    * development-docker-compose.yml - This is a local dev environment, will spin up a local api container connecting with a local db. It will run the Django Dev Server with the DEBUG variable set to True.
     * staging-docker-compose.yml - This is set to run a production-like environment, creating a api container running with gunicorn server, and green database pooling. It removes the local development from the stack, connecting to a remote database for which the variables/creds are entered into the staging vars in the .env file
     * travis-docker-compose.yml - Deploy version of docker-compose file
     * testing-docker-compose.yml - configures testing version of the API
@@ -25,16 +25,41 @@ API Related:
 
 * gunicorn_config.py - Config file for the gunicorn server
 
+## Run the Sample
 
-## Getting Started
+There is currently a Sample API included within the repo. To run:
 
-First you will want to setup your .env
+1. `cd` into root of directory and run command `cp env.sample .env`
 
-### .env file
+2. The sample variables will work for project, but you can change the password if you like
 
-1. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
+3. Start the development container using the command: `./bin/start.sh -l`
 
-2. To begin with setup you local variables, ignoring the staging ones at this time:
+4. Confirm you have executable perms on all the scripts in the `./bin` folder: `$ chmod +x ./bin/*.sh` Feel free to read each one and assign perms individually, cause it is your computer :stuck_out_tongue_winking_eye: and security is a real thing.
+
+5. Run the `build.sh` script to build the project. Since you are going to be running it on the local machine you will want to run: `./bin/build.sh -l` - This command is doing a docker-compose build in the background. It is downloading the images needed for the project to your local machine.
+
+6. Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
+
+7. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`, and the Django `admin` login at `http://localhost:8000/admin`.
+
+8. To Run Tests: run the `./bin/build.sh -l` followed by the `./bin/test.sh -l`  command.
+
+9. Note that the `api` container will write some files into your Git repository. They're in `.gitignore`, so they won't be checked into version control.
+
+10. You can stop the container using ctrl-c to stop the process in the terminal window.
+
+
+## Quickstart for your own API - Development
+
+Once you understand the sample you can create your own api. Once you do this it will delete the sample, replacing the files with your own.
+
+1. Set a local environment variable for the project title. This will need to be a django/python compliant name.:
+`export PROJECT_NAME=dead_songs`
+
+2. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
+
+3. To begin with setup you local variables, ignoring the staging ones at this time:
 
 ```
 PROJECT_NAME=<What you want to name the project>
@@ -60,4 +85,10 @@ DEVELOPMENT_POSTGRES_PASSWORD=sit-down-c0mic
 DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 ```
 
-3. 
+4. Copy you database backup into the backup folder. Database container is a Postgis-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
+
+5. Run the create-project script: `./bin/create-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name.)
+
+6. Open the project `settings.py` file and find and replace all references to <EXAMPLE_PROJECT_NAME> with your actual project name (should be the same as the folder name this file is located in)
+
+7. Run the create-app script: `./bin/create-app.sh` (This will create the restframework api in a folder called api)

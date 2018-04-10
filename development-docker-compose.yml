@@ -8,7 +8,7 @@ services:
     ports:
       - 5439:5432
     environment:
-      - POSTGRES_PASSWORD
+      - POSTGRES_PASSWORD=sit-down-c0mic
   api_development:
     build:
       context: .
@@ -24,9 +24,9 @@ services:
     environment:
       - PROJECT_NAME
       - DEBUG=True
-      - POSTGRES_USER={DEVELOPMENT_POSTGRES_USER}
-      - POSTGRES_NAME={DEVELOPMENT_POSTGRES_NAME}
-      - POSTGRES_HOST={DEVELOPMENT_POSTGRES_HOST}
-      - POSTGRES_PORT={DEVELOPMENT_POSTGRES_PORT}
-      - POSTGRES_PASSWORD={DEVELOPMENT_POSTGRES_PASSWORD}
-      - DJANGO_SECRET_KEY={DEVELOPMENT_DJANGO_SECRET_KEY}
+      - POSTGRES_USER=postgres
+      - POSTGRES_NAME=dead_songs
+      - POSTGRES_HOST=db_development
+      - POSTGRES_PORT=5432
+      - POSTGRES_PASSWORD=sit-down-c0mic
+      - DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
