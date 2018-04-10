@@ -24,7 +24,7 @@ services:
     environment:
       - PROJECT_NAME
       - DEBUG=True
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=dbsuper
       - POSTGRES_NAME=dead_songs
       - POSTGRES_HOST=db_development
       - POSTGRES_PORT=5432
