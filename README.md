@@ -41,11 +41,11 @@ There is currently a Sample API included within the repo. To run:
 
 6. Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
 
-7. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`, and the Django `admin` login at `http://localhost:8000/admin`.
+7. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`.
 
 8. To Run Tests: run the `./bin/build.sh -l` followed by the `./bin/test.sh -l`  command.
 
-9. Note that the `api` container will write some files into your Git repository. They're in `.gitignore`, so they won't be checked into version control.
+9. Note that the `api_development` container will write some files into your Git repository. They're in `.gitignore`, so they won't be checked into version control.
 
 10. You can stop the container using ctrl-c to stop the process in the terminal window.
 
