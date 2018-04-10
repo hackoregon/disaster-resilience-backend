@@ -6,12 +6,11 @@ from rest_framework_swagger.views import get_swagger_view
 
 
 router = DefaultRouter()
-router.register(r'^songs/$', views.song_list, base_name='api')
-router.register(r'^songs/(?P<pk>[0-9]+)/$', views.song_detail, base_name='api')
+router.register(r'songs', views.SongViewSet)
+
 
 #schema view
-#schema_view = get_schema_view(title='ODOT Crash API')
-schema_view = get_swagger_view(title='ODOT Crash API')
+schema_view = get_swagger_view(title='Dead Songs')
 
 urlpatterns = [
     url(r'^schema/', schema_view),
