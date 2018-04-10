@@ -4,7 +4,7 @@ usage() { echo "Usage: $0 [-l] for a development build, [-s] for a staging build
 while getopts ":lst" opt; do
     case "$opt" in
         l)
-          docker-compose -f docker-compose.yml build
+          docker-compose -f development-docker-compose.yml build
           ;;
         s)
           docker-compose -f staging-docker-compose.yml build
