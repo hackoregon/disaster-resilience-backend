@@ -31,23 +31,13 @@ There is currently a Sample API included within the repo. To run:
 
 1. `cd` into root of directory and run command `cp env.sample .env`
 
-2. The sample variables will work for project, but you can change the password if you like
+2. Build the development containers using the command: `./bin/build.sh -l`. If you cannot run you may need to confirm you have executable perms on all the scripts in the `./bin` folder: `$ chmod +x ./bin/*.sh` Feel free to read each one and assign perms individually, cause it is your computer :stuck_out_tongue_winking_eye: and security is a real thing.
 
-3. Start the development container using the command: `./bin/start.sh -l`
+3. Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
 
-4. Confirm you have executable perms on all the scripts in the `./bin` folder: `$ chmod +x ./bin/*.sh` Feel free to read each one and assign perms individually, cause it is your computer :stuck_out_tongue_winking_eye: and security is a real thing.
+4. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`.
 
-5. Run the `build.sh` script to build the project. Since you are going to be running it on the local machine you will want to run: `./bin/build.sh -l` - This command is doing a docker-compose build in the background. It is downloading the images needed for the project to your local machine.
-
-6. Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
-
-7. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`.
-
-8. To Run Tests: run the `./bin/build.sh -l` followed by the `./bin/test.sh -l`  command.
-
-9. Note that the `api_development` container will write some files into your Git repository. They're in `.gitignore`, so they won't be checked into version control.
-
-10. You can stop the container using ctrl-c to stop the process in the terminal window.
+5. You can stop the container using ctrl-c to stop the process in the terminal window.
 
 
 ## Quickstart for your own API - Development
@@ -87,8 +77,6 @@ DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 
 4. Copy you database backup into the backup folder. Database container is a Postgis-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
 
-5. Run the create-project script: `./bin/create-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name.)
+5. Run the create-project script: `./bin/create-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name. It will also replace the default settings.py file with the sample.py, which has been pre configured a bit for our stack.)
 
-6. Open the project `settings.py` file and find and replace all references to <EXAMPLE_PROJECT_NAME> with your actual project name (should be the same as the folder name this file is located in)
-
-7. Run the create-app script: `./bin/create-app.sh` (This will create the restframework api in a folder called api)
+6. Run the create-app script: `./bin/create-app.sh` (This will create the restframework api in a folder called api)

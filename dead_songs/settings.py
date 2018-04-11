@@ -30,19 +30,37 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'api',
-    'corsheaders',
-    'django_filters',
-    'rest_framework',
-    'rest_framework_swagger',
-    'test_without_migrations',
-    ]
+if DEBUG == True:
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'api',
+        'corsheaders',
+        'django_filters',
+        'rest_framework',
+        'rest_framework_swagger',
+        'test_without_migrations',
+        ]
+
+else:
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'api',
+        'corsheaders',
+        'django_filters',
+        'rest_framework',
+        'rest_framework_swagger',
+        ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
