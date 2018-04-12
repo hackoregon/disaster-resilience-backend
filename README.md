@@ -35,7 +35,13 @@ There is currently a Sample API included within the repo. To run:
 
 3. Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
 
-4. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`.
+4. Open your browser and you will be able to access the Django Rest Framework browserable front end. The IP address you use will depend on your Docker hosting.
+
+    * Windows 10 Pro / Docker for Windows: API root `http://localhost:8000/api`, Swagger API schema `http://localhost:8000/schema`
+    * Other Windows / Docker Toolbox: API root `http://MACHINE-IP:8000/api`, Swagger API schema `http://MACHINE-IP:8000/schema`
+    
+        where `MACHINE-IP` is the IP address `docker-machine ip` returns.
+    * Linux: API root `http://localhost:8000/api`, Swagger API schema http://localhost:8000/schema`
 
 5. You can stop the container using ctrl-c to stop the process in the terminal window.
 
