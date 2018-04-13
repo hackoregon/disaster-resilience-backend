@@ -8,7 +8,7 @@ services:
     ports:
       - 5439:5432
     environment:
-      - POSTGRES_PASSWORD=sit-down-c0mic
+      - POSTGRES_PASSWORD=${DEVELOPMENT_POSTGRES_PASSWORD}
   api_development:
     build:
       context: .
