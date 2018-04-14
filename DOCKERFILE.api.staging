@@ -29,7 +29,7 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 COPY requirements/requirements.txt /code/
 RUN pip install -r requirements.txt
 
-COPY requirements/requirements.development.txt /code/
+COPY requirements/requirements.staging.txt /code/
 RUN pip install -r requirements.staging.txt
 
 COPY requirements/requirements.geodjango.txt /code/
