@@ -9,6 +9,8 @@ services:
       - 5439:5432
     environment:
       - POSTGRES_PASSWORD=${DEVELOPMENT_POSTGRES_PASSWORD}
+      - DB_USERS_TO_CREATE=${DEVELOPMENT_DB_USERS_TO_CREATE}
+      - TEAM_PASSWORD=${DEVELOPMENT_TEAM_PASSWORD}
   api_development:
     build:
       context: .
