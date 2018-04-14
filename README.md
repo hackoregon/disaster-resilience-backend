@@ -86,3 +86,18 @@ DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 5. Run the create-project script: `./bin/create-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name. It will also replace the default settings.py file with the sample.py, which has been pre configured a bit for our stack.)
 
 6. Run the create-app script: `./bin/create-app.sh` (This will create the restframework api in a folder called api)
+
+
+## Contributors and History
+
+This repo represents the work of many members of the Hack Oregon project team. The roots of this work began with the [2017 backend-service-pattern](https://github.com/hackoregon/backend-service-pattern), the work of the DevOps and platform teams, and the APIs deployed for the 2017 seasons.
+
+This current implementation builds on the [transportation-system-backend](https://github.com/hackoregon/transportation-system-backend) and [passenger_census_api](https://github.com/hackoregon/passenger_census_api). The database structure is an implementation of the postgis container of the data-science-pet-containers repo.
+
+### Major Contributors:
+
+M. Edward (Ed) Borasky ([znmeb](https://github.com/znmeb)),
+Brian Grant ([bhgrant8](https://github.com/bhgrant8), [BrianHGrant](https://github.com/BrianHGrant)),
+Adi ([kiniadit](https://github.com/kiniadit)),
+Mike Lonergan ([mikethecanuck](https://github.com/mikethecanuck)),
+Alec Peters ([adpeters](https://github.com/adpeters))
