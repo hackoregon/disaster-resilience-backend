@@ -9,7 +9,6 @@ services:
       - 5439:5432
     environment:
       - POSTGRES_PASSWORD=sit-down-c0mic
-      - DB_USERS_TO_CREATE=transportation-systems
   api_development:
     build:
       context: .
