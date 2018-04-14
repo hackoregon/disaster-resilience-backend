@@ -46,7 +46,7 @@ Once you understand the sample you can create your own api. Once you do this it 
 
 1. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
 
-2. To begin with setup you local variables, ignoring the staging ones at this time:
+2. Edit your `.env` file and change the `DEVELOPMENT_` variables to appropriate values for your project - feel free to ignore the `STAGING_` variables for the moment:
 
 ```
 PROJECT_NAME=<What you want to name the project> # MUST BE A DOCKER PROJECT NAME COMPLIANT NAME
