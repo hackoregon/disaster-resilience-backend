@@ -44,15 +44,12 @@ There is currently a Sample API included within the repo. To run:
 
 Once you understand the sample you can create your own api. Once you do this it will delete the sample, replacing the files with your own.
 
-1. Set a local environment variable for the project title. This will need to be a django/python compliant name.:
-`export PROJECT_NAME=dead_songs`
+1. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
 
-2. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
-
-3. To begin with setup you local variables, ignoring the staging ones at this time:
+2. To begin with setup you local variables, ignoring the staging ones at this time:
 
 ```
-PROJECT_NAME=<What you want to name the project>
+PROJECT_NAME=<What you want to name the project> # MUST BE A DOCKER PROJECT NAME COMPLIANT NAME
 # keep as true to run the django dev server
 DEBUG=True
 
@@ -75,8 +72,10 @@ DEVELOPMENT_POSTGRES_PASSWORD=sit-down-c0mic
 DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 ```
 
-4. Copy you database backup into the backup folder. Database container is a Postgis-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
+3. Copy you database backup into the backup folder. Database container is a Postgis-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
 
-5. Run the create-project script: `./bin/create-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name. It will also replace the default settings.py file with the sample.py, which has been pre configured a bit for our stack.)
+4. Run the create-project script: `./bin/create-api-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name. It will also replace the default settings.py file with the sample.py, which has been pre configured a bit for our stack.)
 
-6. Run the create-app script: `./bin/create-app.sh` (This will create the restframework api in a folder called api)
+5. Create your api code
+
+6.  Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
