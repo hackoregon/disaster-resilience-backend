@@ -1,7 +1,17 @@
 #! /bin/bash
 
-rm  manage.py
-rm -rf dead_songs
-rm -rf api
+if [ -f ./manage.py ]; then
+    rm -rf manage.py
+fi
+#
+if [ -d ./dead_songs ]; then
+    rm -rf dead_songs
+fi
 
-rm ./Backups/dead_songs.sql
+if [ -d ./api ]; then
+    rm -rf api
+fi
+
+if [ -f ./Backups/dead_songs.sql ]; then
+    rm ./Backups/dead_songs.sql
+fi
