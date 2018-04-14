@@ -20,13 +20,13 @@ if [ -f ./Backups/dead_songs.sql ]; then
     rm ./Backups/dead_songs.sql
 fi
 
-if [ "docker ps -a -q -f ancestor=db_development --format=\"{{.ID}}\"" ]; then
+if [ "$(docker ps -a -q -f ancestor=db_development --format=\"{{.ID}}\")" ]; then
   echo "removing db container"
   docker stop $(docker ps -a -q  --filter ancestor=db_development --format="{{.ID}}")
   docker rm $(docker ps -a -q  --filter ancestor=db_development --format="{{.ID}}")
 fi
 
-if [ "docker ps -a -q -f name=api_development --format=\"{{.ID}}\"" ]; then
+if [ "$(docker ps -a -q -f name=api_development --format=\"{{.ID}}\")" ]; then
   echo "removing api container"
   docker stop $(docker ps -a -q  --filter name=api_development --format="{{.ID}}")
   docker rm $(docker ps -a -q  --filter name=api_development --format="{{.ID}}")
