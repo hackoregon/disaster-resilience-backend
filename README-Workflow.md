@@ -9,7 +9,7 @@ I've settled on this workflow for Linux host testing. It treats the `backend-exa
 ## Configuring the run
 1. Clone the repository you created above and `cd` into it.
 2. Copy your database backup into `Backups`. If the backup contains database ownership, you'll need to set `DEVELOPMENT_DATABASE_OWNER` in `.env` to the database owner.
-3. Copy `sample.env` to `.env` and edit `.env`:
+3. Copy `env.sample` to `.env` and edit `.env`:
     * Change PROJECT_NAME
     * Change DEVELOPMENT_POSTGRES_NAME
     * Change DEVELOPMENT_DATABASE_OWNER
