@@ -17,6 +17,15 @@ docker stop $(docker ps -a -q  --filter name=db_development --format="{{.ID}}")
 docker rm $(docker ps -a -q  --filter name=db_development --format="{{.ID}}")
 docker rm $(docker ps -a -q  --filter name=api_development_run --format="{{.ID}}")
 
+# fix ownership
+if [ `uname -s` = "Linux" ]
+then
+  ls -l
+  echo "sudo chown -R `id -u $USER`:`id -g $USER` ."
+  sudo chown -R `id -u $USER`:`id -g $USER` .
+  ls -l
+fi
+
 # Replace newly created settings with the example settings
 echo "Configuring settings..."
 rm $PROJECT_NAME/settings.py
