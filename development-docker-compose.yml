@@ -9,6 +9,7 @@ services:
       - 5439:5432
     environment:
       - POSTGRES_PASSWORD=sit-down-c0mic
+      - DB_USERS_TO_CREATE=${DEVELOPMENT_DATABASE_OWNER}
   api_development:
     build:
       context: .
