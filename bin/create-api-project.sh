@@ -10,6 +10,9 @@ echo "Removing the sample project..."
 bin/remove-sample.sh
 
 # Create django project and api app
+echo "Removing 'db_development' and 'aoi' images"
+docker rmi db_development:latest api:latest
+
 echo "Creating new Django Rest Framework Project Scaffold..."
 echo "This will take some time"
 docker-compose -f development-docker-compose.yml run api_development \
