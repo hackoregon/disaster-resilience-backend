@@ -35,7 +35,12 @@ There is currently a Sample API included within the repo. To run:
 
 3. Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
 
-4. Open your browser and you will be able to access the Django Rest Framework browserable front end at `http://localhost:8000/api`, the Swagger API schema at `http://localhost:8000/schema`.
+4. Open your browser and you will be able to access the Django Rest Framework browserable front end. The IP address you use will depend on your Docker hosting.
+
+    * Windows 10 Pro + Docker for Windows, MacOS or Linux: API root `http://localhost:8000/api`, Swagger API schema `http://localhost:8000/schema`
+    * Docker Toolbox running on Windows or Mac: API root `http://MACHINE-IP:8000/api`, Swagger API schema `http://MACHINE-IP:8000/schema`
+
+        where `MACHINE-IP` is the IP address `docker-machine ip` returns.
 
 5. You can stop the container using ctrl-c to stop the process in the terminal window.
 
@@ -81,3 +86,17 @@ DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 6. Create your api code. Checkout the [Django Rest Framework Guide](http://www.django-rest-framework.org/) on how to proceed.
 
 7.  Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
+
+## Contributors and History
+
+This repo represents the work of many members of the Hack Oregon project team. The roots of this work began with the [2017 backend-service-pattern](https://github.com/hackoregon/backend-service-pattern), the work of the DevOps and platform teams, and the APIs deployed for the 2017 seasons.
+
+This current implementation builds on the [transportation-system-backend](https://github.com/hackoregon/transportation-system-backend) and [passenger_census_api](https://github.com/hackoregon/passenger_census_api). The database structure is an implementation of the postgis container of the data-science-pet-containers repo.
+
+### Major Contributors:
+
+M. Edward (Ed) Borasky ([znmeb](https://github.com/znmeb)),
+Brian Grant ([bhgrant8](https://github.com/bhgrant8), [BrianHGrant](https://github.com/BrianHGrant)),
+Adi ([kiniadit](https://github.com/kiniadit)),
+Mike Lonergan ([mikethecanuck](https://github.com/mikethecanuck)),
+Alec Peters ([adpeters](https://github.com/adpeters))
