@@ -11,13 +11,19 @@ bin/remove-sample.sh
 
 # Create django project and api app
 echo "Creating new Django Rest Framework Project Scaffold..."
-docker-compose -f development-docker-compose.yml run api_development /bin/bash -c "django-admin.py startproject $PROJECT_NAME . ; python manage.py startapp api"
+echo "This will take some time"
+docker-compose -f development-docker-compose.yml run api_development \
+  /bin/bash -c "django-admin.py startproject $PROJECT_NAME . ; python manage.py startapp api"
+
+echo "Saving database restore log"
+container_id=`docker ps | grep db_development | sed 's; .*$;;'`
+docker logs $container_id > db_development.log
+
 echo "Removing temporary containers..."
-docker stop $(docker ps -a -q  --filter name=db_development --format="{{.ID}}")
-docker rm $(docker ps -a -q  --filter name=db_development --format="{{.ID}}")
-docker rm $(docker ps -a -q  --filter name=api_development_run --format="{{.ID}}")
+docker-compose -f development-docker-compose.yml down
 
 # fix ownership
+echo "Fixing ownership on Linux"
 if [ `uname -s` = "Linux" ]
 then
   ls -l
@@ -30,7 +36,6 @@ fi
 echo "Configuring settings..."
 rm $PROJECT_NAME/settings.py
 cp ./bin/example-settings.py $PROJECT_NAME/settings.py
-
-sed -i '' 's/\<EXAMPLE_PROJECT_NAME\>/'$PROJECT_NAME'/g' $PROJECT_NAME/settings.py
+sed -i "s;\<EXAMPLE_PROJECT_NAME\>;$PROJECT_NAME;g" $PROJECT_NAME/settings.py
 
 echo "Finished"
