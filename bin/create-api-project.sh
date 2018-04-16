@@ -13,9 +13,7 @@ bin/remove-sample.sh
 echo "Creating new Django Rest Framework Project Scaffold..."
 docker-compose -f development-docker-compose.yml run api_development /bin/bash -c "django-admin.py startproject $PROJECT_NAME . ; python manage.py startapp api"
 echo "Removing temporary containers..."
-docker stop $(docker ps -a -q  --filter name=db_development --format="{{.ID}}")
-docker rm $(docker ps -a -q  --filter name=db_development --format="{{.ID}}")
-docker rm $(docker ps -a -q  --filter name=api_development_run --format="{{.ID}}")
+docker-compose -f development-docker-compose.yml down
 
 # Replace newly created settings with the example settings
 echo "Configuring settings..."
