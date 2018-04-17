@@ -8,18 +8,29 @@ Allows for multiple environments to run API, through series of docker-compose fi
 
 DOCKER related:
 
-* env.sample - A sample env file to setup environmental variables
+* `env.sample` - A sample env file to setup environmental variables
 * bin directory - directory to store your startup and entrypoint scripts.
+  * `build.sh` - This script runs a `docker-compose build` command, accepts 2 flags:
+    * `-d` - Builds containers based on the `development-docker-compose.yml` file
+    * `-p` - Builds containers based on the `production-docker-compose.yml` file
+  * `start.sh` - This script runs a `docker-compose up` command, starting the containers and apps, accepts 2 flags:
+    * `-d` - Starts containers based on the `development-docker-compose.yml` file
+    * `-p` - Starts containers based on the `production-docker-compose.yml` file
+  * `test.sh` - This script spins up and runs tests in test containers. removes once complete
+  * Entrypoint scripts - These are run within the api container when the docker-compose up is run.
+    * `development-docker-entrypoint.sh` - Startup tasks for development container
+    * `production-docker-entrypoint.sh` - Startup tasks for production container
+    * `test-entrypoint.sh` -  Startup tasks for testing container
+  * `create-api-project.sh` - Script which will remove the sample app and create a new api with specified project name. It assumes the default app created will be named `api`.
+  * `remove-sample.sh` - This script removes the sample application, is called as part of the `create-api-project`.
 * Backups directory - directory will store any database backups to restore into the local database Container, also restore script
-* Docker-Compose Files -  4 files which compose containers and networking for each environment:
+* Docker-Compose Files -  2 files which compose containers and networking for each environment:
     * development-docker-compose.yml - This is a local dev environment, will spin up a local api container connecting with a local db. It will run the Django Dev Server with the DEBUG variable set to True.
-    * staging-docker-compose.yml - This is set to run a production-like environment, creating a api container running with gunicorn server, and green database pooling. It removes the local development from the stack, connecting to a remote database for which the variables/creds are entered into the staging vars in the .env file
-    * travis-docker-compose.yml - Deploy version of docker-compose file
-    * testing-docker-compose.yml - configures testing version of the API
+    * production-docker-compose.yml - This is set to run a production-like environment, creating a api container running with gunicorn server, and green database pooling. It removes the local development database from the stack, connecting to a remote database for which the variables/creds are entered into the production vars in the .env file
 * DOCKERFILEs:
   * DOCKERFILE.db.development - The DOCKERFILE for local database container
   * DOCKERFILE.api.development - The DOCKERFILE for local api container
-  * DOCKERFILE.api.staging - The DOCKERFILE for a staging build of api
+  * DOCKERFILE.api.production - The DOCKERFILE for a production build of api
 
 API Related:
 
@@ -51,7 +62,7 @@ Once you understand the sample you can create your own api. Once you do this it 
 
 1. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
 
-2. Edit your `.env` file and change the `DEVELOPMENT_` variables to appropriate values for your project - feel free to ignore the `STAGING_` variables for the moment:
+2. Edit your `.env` file and change the `DEVELOPMENT_` variables to appropriate values for your project - feel free to ignore the `PRODUCTION_` variables for the moment:
 
 ```
 PROJECT_NAME=<What you want to name the project> # MUST BE A DOCKER PROJECT NAME COMPLIANT NAME
