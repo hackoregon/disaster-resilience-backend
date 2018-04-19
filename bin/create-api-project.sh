@@ -30,6 +30,11 @@ fi
 echo "Configuring settings..."
 rm $PROJECT_NAME/settings.py
 cp ./bin/example-settings.py $PROJECT_NAME/settings.py
-sed -i "s;\<EXAMPLE_PROJECT_NAME\>;$PROJECT_NAME;g" $PROJECT_NAME/settings.py
+if [ `uname -s` = "Darwin" ]
+then 
+  sed -i "" "s/\<EXAMPLE_PROJECT_NAME\>/$PROJECT_NAME/g" $PROJECT_NAME/settings.py
+else
+  sed -i "s;\<EXAMPLE_PROJECT_NAME\>;$PROJECT_NAME;g" $PROJECT_NAME/settings.py
+fi
 
 echo "Finished"
