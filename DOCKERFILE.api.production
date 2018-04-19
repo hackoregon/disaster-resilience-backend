@@ -27,7 +27,7 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
   && apt-get clean
 
 COPY /requirements/* /code/
-RUN pip install -r development.txt
+RUN pip install -r production.txt
 
 RUN pip install -r geodjango.txt
 
