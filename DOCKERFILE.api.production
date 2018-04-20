@@ -26,14 +26,10 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
     postgresql-client-9.6 \
   && apt-get clean
 
-COPY requirements/requirements.txt /code/
-RUN pip install -r requirements.txt
+COPY /requirements/* /code/
+RUN pip install -r production.txt
 
-COPY requirements/requirements.staging.txt /code/
-RUN pip install -r requirements.staging.txt
-
-COPY requirements/requirements.geodjango.txt /code/
-RUN pip install -r requirements.geodjango.txt
+RUN pip install -r geodjango.txt
 
 RUN python
 COPY . /code/
