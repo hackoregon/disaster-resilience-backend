@@ -42,9 +42,9 @@ There is currently a Sample API included within the repo. To run:
 
 1. First `cd` into the root directory of your clone of the repo and run the command `cp env.sample .env`
 
-2. Build the development containers using the command: `./bin/build.sh -l`. If this script won't run, you may need to confirm you have executable perms on all the scripts in the `./bin` folder: `$ chmod +x ./bin/*.sh` Feel free to read each one and assign perms individually, 'cause it is your computer :stuck_out_tongue_winking_eye: and security is a real thing.
+2. Build the development containers using the command: `./bin/build.sh -d`. If this script won't run, you may need to confirm you have executable perms on all the scripts in the `./bin` folder: `$ chmod +x ./bin/*.sh` Feel free to read each one and assign perms individually, 'cause it is your computer :stuck_out_tongue_winking_eye: and security is a real thing.
 
-3. Once this completes you will now want to start up the project. We will use the `start.sh` script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
+3. Once this completes you will now want to start up the project. We will use the `start.sh` script for this, again using the `-d` flag to run locally:  `./bin/start.sh -d` The first time you run this you will see the database restores. You will also see the api container start up.
 
 4. Open your browser and you will be able to access the Django REST framework browserable front end. The IP address you use will depend on your Docker hosting:
 
@@ -97,7 +97,7 @@ DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 
 6. Create your api code. Checkout the [Django REST framework Guide](http://www.django-rest-framework.org/) on how to proceed.
 
-7.  Once this completes you will now want to start up the project. We will use the `start.sh` script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
+7. Once this completes you will now want to start up the project. We will use the `start.sh` script for this, again using the `-d` flag to run locally:  `./bin/start.sh -d` The first time you run this you will see the database restores. You will also see the api container start up.
 
 ## Contributors and History
 
