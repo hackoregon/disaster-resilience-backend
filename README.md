@@ -2,7 +2,7 @@
 
 Simple Example Repo to quickstart a DRF API within a Docker Container
 
-Allows for multiple environments to run API, through series of docker-compose files. You should be able to replace the Django Code, making a few updates and get this running
+Allows for multiple environments to run API, through series of docker-compose files. You should be able to replace the Django Code, making a few updates and get this running with a new API or existing one.
 
 ## Main Parts of Repo:
 
@@ -19,7 +19,7 @@ DOCKER related:
 * DOCKERFILEs:
   * DOCKERFILE.db.development - The DOCKERFILE for local database container
   * DOCKERFILE.api.development - The DOCKERFILE for local api container
-  * DOCKERFILE.api.staging - The DOCKERFILE for local api container
+  * DOCKERFILE.api.staging - The DOCKERFILE for a staging build of api
 
 API Related:
 
@@ -37,28 +37,24 @@ There is currently a Sample API included within the repo. To run:
 
 4. Open your browser and you will be able to access the Django Rest Framework browserable front end. The IP address you use will depend on your Docker hosting.
 
-    * Windows 10 Pro / Docker for Windows: API root `http://localhost:8000/api`, Swagger API schema `http://localhost:8000/schema`
-    * Other Windows / Docker Toolbox: API root `http://MACHINE-IP:8000/api`, Swagger API schema `http://MACHINE-IP:8000/schema`
-    
+    * Windows 10 Pro + Docker for Windows, MacOS or Linux: API root `http://localhost:8000/api`, Swagger API schema `http://localhost:8000/schema`
+    * Docker Toolbox running on Windows or Mac: API root `http://MACHINE-IP:8000/api`, Swagger API schema `http://MACHINE-IP:8000/schema`
+
         where `MACHINE-IP` is the IP address `docker-machine ip` returns.
-    * Linux: API root `http://localhost:8000/api`, Swagger API schema http://localhost:8000/schema`
 
 5. You can stop the container using ctrl-c to stop the process in the terminal window.
 
 
 ## Quickstart for your own API - Development
 
-Once you understand the sample you can create your own api. Once you do this it will delete the sample, replacing the files with your own.
+Once you understand the sample you can create your own api. Once you do this it will delete the sample, replacing the files with your own. At this point you should no longer commit changes to the original repo.
 
-1. Set a local environment variable for the project title. This will need to be a django/python compliant name.:
-`export PROJECT_NAME=dead_songs`
+1. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
 
-2. `cp env.sample .env` in the root of the repo (this file is already in the .gitignore, so you should not have to worry about it being checked into github)
-
-3. To begin with setup you local variables, ignoring the staging ones at this time:
+2. Edit your `.env` file and change the `DEVELOPMENT_` variables to appropriate values for your project - feel free to ignore the `STAGING_` variables for the moment:
 
 ```
-PROJECT_NAME=<What you want to name the project>
+PROJECT_NAME=<What you want to name the project> # MUST BE A DOCKER PROJECT NAME COMPLIANT NAME
 # keep as true to run the django dev server
 DEBUG=True
 
@@ -81,8 +77,26 @@ DEVELOPMENT_POSTGRES_PASSWORD=sit-down-c0mic
 DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 ```
 
-4. Copy you database backup into the backup folder. Database container is a Postgis-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
+3. Copy you database backup into the backup folder. Database container is a Postgis-enabled 9.6 container. Backup can be a .backup, .sql, or .sql.gz format.
 
-5. Run the create-project script: `./bin/create-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name. It will also replace the default settings.py file with the sample.py, which has been pre configured a bit for our stack.)
+4. Run the create-project script: `./bin/create-api-project.sh` (This will delete all files related to the sample app and replace with a new django restframework app with your project name. It will also replace the default settings.py file with the sample.py, which has been pre configured a bit for our stack.)
 
-6. Run the create-app script: `./bin/create-app.sh` (This will create the restframework api in a folder called api)
+5. This would be a good point to instantiate a new Git history for the project going forward. You can remove the existing git through removing the hidden folder. Make sure you are in the repo directory and run `rm -rf .git`. You can then run `git init` to start a new history and then add your remote branch.
+
+6. Create your api code. Checkout the [Django Rest Framework Guide](http://www.django-rest-framework.org/) on how to proceed.
+
+7.  Once this completes you will now want to start up the project. We will use the start.sh script for this, again using the `-l` flag to run locally:  `./bin/start.sh -l` The first time you run this you will see the database restores. You will also see the api container start up.
+
+## Contributors and History
+
+This repo represents the work of many members of the Hack Oregon project team. The roots of this work began with the [2017 backend-service-pattern](https://github.com/hackoregon/backend-service-pattern), the work of the DevOps and platform teams, and the APIs deployed for the 2017 seasons.
+
+This current implementation builds on the [transportation-system-backend](https://github.com/hackoregon/transportation-system-backend) and [passenger_census_api](https://github.com/hackoregon/passenger_census_api). The database structure is an implementation of the postgis container of the data-science-pet-containers repo.
+
+### Major Contributors:
+
+M. Edward (Ed) Borasky ([znmeb](https://github.com/znmeb)),
+Brian Grant ([bhgrant8](https://github.com/bhgrant8), [BrianHGrant](https://github.com/BrianHGrant)),
+Adi ([kiniadit](https://github.com/kiniadit)),
+Mike Lonergan ([mikethecanuck](https://github.com/mikethecanuck)),
+Alec Peters ([adpeters](https://github.com/adpeters))
