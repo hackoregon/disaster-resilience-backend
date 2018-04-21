@@ -24,5 +24,7 @@ echo "Make migrations"
 echo "Migrate"
 ./manage.py migrate
 
+./manage.py dumpdata --indent=2 -v 2 --traceback api > ./initial_data.json
+
 echo "Run server..."
 ./manage.py runserver 0.0.0.0:8000
