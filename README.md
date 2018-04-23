@@ -55,6 +55,23 @@ There is currently a Sample API included within the repo. To run:
 
 5. You can stop the container using Ctrl-C to stop the process in the terminal window.
 
+## Run the Tests
+
+This repo contains some tests for the Sample API. It will import a fixtures file containing example data that has been exported from the Django API using the `dumpdata` command:
+
+```
+./manage.py dumpdata --indent=2 -v 2 --traceback api > ./api/fixtures/songs.json
+```
+
+To run the tests:
+
+1. Run `./bin/test.sh -d` - this will load the fixtures and run tests.
+
+Currently this repo contains two type of tests:
+
+* Unit tests which verify the expected data types are returned
+* API tests, which verify correct status codes are returned when making calls to api endpoints
+
 ## Quickstart for your own API - Development
 
 Once you understand the sample you can create your own api. Once you do this it will delete the sample, replacing the files with your own. NOTE: at this point you should no longer commit changes to the original repo.
