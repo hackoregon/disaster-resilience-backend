@@ -9,6 +9,9 @@ set -euo pipefail
 echo "Removing the sample project..."
 bin/remove-sample.sh
 
+# Docker cleanup
+docker-compose -f development-docker-compose.yml down --rmi all --volumes --remove-orphans
+
 # Create django project and api app
 echo "Creating new Django Rest Framework Project Scaffold..."
 echo "This will take some time"
