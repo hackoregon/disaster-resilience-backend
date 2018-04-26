@@ -137,7 +137,7 @@ If you would prefer or need to startup your own API, here are the steps to walk 
 ```
 docker-compose -f development-docker-compose.yml run --no-deps --rm \
   api_development \
-  /bin/bash -c "django-admin.py startproject $PROJECT_NAME . ; python manage.py startapp api"
+  /bin/bash -c "django-admin.py startproject something_else_2fhdfsl . ; python manage.py startapp api"
 ```
 
 5. If on Linux, you may need to change ownership on the files created from the docker container:
