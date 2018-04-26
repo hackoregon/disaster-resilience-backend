@@ -9,7 +9,6 @@ RUN apt-get update \
     binutils \
     gdal-bin \
     libproj-dev \
-    libpq-dev \
     postgresql-client-9.6 \
   && apt-get clean
 
