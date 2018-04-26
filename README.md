@@ -74,7 +74,7 @@ Currently this repo contains two type of tests:
 
 ## Quickstart for your own API - Development
 
-Once you understand the sample you can create your own api. Once you do this it will delete the sample, replacing the files with your own. NOTE: at this point you should no longer commit changes to the original repo.
+Once you understand the sample you can create your own api. This repo contains a quickstart script that is intended to remove the sample app and quickly spin up a development repo. It is only intended to remove the sample application. It will not delete an api if it is already began. See Manual Setup steps below on how to manually remove an existing API and start or copy in your own.
 
 1. `cp env.sample .env` in the root of the repo (this file is already in the `.gitignore`, so you should not have to worry about it getting accidentally checked into a GitHub repo)
 
@@ -115,6 +115,43 @@ DEVELOPMENT_DJANGO_SECRET_KEY=r0ck.ar0und.the.c10ck
 6. Create your api code. Checkout the [Django REST framework Guide](http://www.django-rest-framework.org/) on how to proceed.
 
 7. Once this completes you will now want to start up the project. We will use the `start.sh` script for this, again using the `-d` flag to run locally:  `./bin/start.sh -d` The first time you run this you will see the database restores. You will also see the api container start up.
+
+## Manually Setup an API - Development
+
+If you would prefer or need to startup your own API, here are the steps to walk through:
+
+1. Follow Steps 1-3 under the Quickstart Guide
+
+2. Remove the Django related and any old database files, not related to your project. For the sample app this would be:
+
+* `./manage.py`
+* `dead_songs` The Django folder (The $PROJECT_NAME folder)
+* `api` the Django app folder
+* `./Backups/dead_songs.sql` - the sql backup
+
+3. You will want to tear down and remove the entire docker stack to confirm no extra artifacts from the sample app are remaining in your new build:
+`docker-compose -f development-docker-compose.yml down --rmi all --volumes --remove-orphans`
+
+4. Now you will want to create the sample app within your docker container. The development-docker-compose.yml file gives the basic config of your setup, connecting to the env variables specified. It specifies the root of the repo directory as the local storage volume so you will see files created within the repo. :
+
+```
+docker-compose -f development-docker-compose.yml run --no-deps --rm \
+  api_development \
+  /bin/bash -c "django-admin.py startproject something_else_2fhdfsl . ; python manage.py startapp api"
+```
+
+5. If on Linux, you may need to change ownership on the files created from the docker container:
+
+```
+ls -l
+echo "sudo chown -R `id -u $USER`:`id -g $USER` ."
+sudo chown -R `id -u $USER`:`id -g $USER` .
+ls -l
+```
+
+6. There is a recommended settings.py file in the bin called `example_settings.py`. This is the basic current example which works with the intended python packages for both development and production. It is configured to pickup the os variables related to Django and the Database. In a new API you should be able to copy over the file, renaming and replacing the auto generated `settings.py`. After this, you can replace all occurances of `<EXAMPLE_PROJECT_NAME>` with your actual project name
+
+7. Continue with steps 5-7 of Quickstart guide to complete building the API
 
 ## Contributors and History
 
