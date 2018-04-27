@@ -1,5 +1,5 @@
-notifications:
-  slack:
-    rooms:
-      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#general
-      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#random
+#notifications:
+#  slack:
+#    rooms:
+#      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#general
+#      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#random
