@@ -13,6 +13,56 @@ class BuildingFootprintsSerializer(serializers.HyperlinkedModelSerializer):
         model = preexisting_models.BuildingFootprints 
         fields = '__all__'
 
+class CensusBgAoiSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.CensusBgAoi
+        fields = '__all__'
+
+class CommunityCentersSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.CommunityCenters
+        fields = '__all__'
+
+class CountiesAoiSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.CountiesAoi
+        fields = '__all__'
+
+class HospitalSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.Hospital
+        fields = '__all__'
+
+class OregonLiquefactionSusceptibilitySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.OregonLiquefactionSusceptibility
+        fields = '__all__'
+
+class OregonNehrpSiteClassSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.OregonNehrpSiteClass
+        fields = '__all__'
+
+class OregonVsMeasurementIntervalsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.OregonVsMeasurementIntervals
+        fields = '__all__'
+
+class OregonVsMeasurementSitesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.OregonVsMeasurementSites
+        fields = '__all__'
+
+class SubstationPortlandSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.SubstationPortland
+        fields = '__all__'
+
+class UnreinforcedMasonryBuildingsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.UnreinforcedMasonryBuildings
+        fields = '__all__'
+
 class ElectricalTransmissionStructuresSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.ElectricalTransmissionStructures
@@ -106,9 +156,4 @@ class RegionalWaterDistrictsSerializer(serializers.HyperlinkedModelSerializer):
 class ServicesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Services
-        fields = '__all__'
-
-class SpatialRefSysSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.SpatialRefSys
         fields = '__all__'

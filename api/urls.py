@@ -27,6 +27,16 @@ router.register(r'PressurizedMains', views.PressurizedMainsSet)
 router.register(r'RegionalDrinkingWaterAdvisoryBoundary', views.RegionalDrinkingWaterAdvisoryBoundarySet)
 router.register(r'RegionalWaterDistricts', views.RegionalWaterDistrictsSet)
 router.register(r'Services', views.ServicesSet)
+router.register(r'CensusBgAoi', views.CensusBgAoiSet)
+router.register(r'CommunityCenters', views.CommunityCentersSet)
+router.register(r'CountiesAoi', views.CountiesAoiSet)
+router.register(r'Hospital', views.HospitalSet)
+router.register(r'OregonLiquefactionSusceptibility', views.OregonLiquefactionSusceptibilitySet)
+router.register(r'OregonNehrpSiteClass', views.OregonNehrpSiteClassSet)
+router.register(r'OregonVsMeasurementIntervals', views.OregonVsMeasurementIntervalsSet)
+router.register(r'OregonVsMeasurementSites', views.OregonVsMeasurementSitesSet)
+router.register(r'SubstationPortland', views.SubstationPortlandSet)
+router.register(r'UnreinforcedMasonryBuildings', views.UnreinforcedMasonryBuildingsSet)
 
 
 urlpatterns = [

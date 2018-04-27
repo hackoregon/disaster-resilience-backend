@@ -950,18 +950,6 @@ class Services(models.Model):
         db_table = 'services'
 
 
-class SpatialRefSys(models.Model):
-    srid = models.IntegerField(primary_key=True)
-    auth_name = models.CharField(max_length=256, blank=True, null=True)
-    auth_srid = models.IntegerField(blank=True, null=True)
-    srtext = models.CharField(max_length=2048, blank=True, null=True)
-    proj4text = models.CharField(max_length=2048, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'spatial_ref_sys'
-
-
 class SubstationPortland(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
     averagexfm = models.DecimalField(max_digits=9, decimal_places=0, blank=True, null=True)

@@ -172,10 +172,72 @@ class ServicesSet(viewsets.ReadOnlyModelViewSet):
     queryset = preexisting_models.Services.objects.all()
     serializer_class = serializers.ServicesSerializer
 
+class UnreinforcedMasonryBuildingsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.UnreinforcedMasonryBuildings.objects.all()
+    serializer_class = serializers.UnreinforcedMasonryBuildingsSerializer
 
-# class SpatialRefSysSet(viewsets.ReadOnlyModelViewSet):
-#     """
-#     API endpoint that allows NeighborhoodUnits to be viewed or listed.
-#     """
-#     queryset = preexisting_models.SpatialRefSys.objects.all()
-#     serializer_class = serializers.SpatialRefSysSerializer
+class SubstationPortlandSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.SubstationPortland.objects.all()
+    serializer_class = serializers.SubstationPortlandSerializer
+
+class OregonVsMeasurementSitesSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.OregonVsMeasurementSites.objects.all()
+    serializer_class = serializers.OregonVsMeasurementSitesSerializer
+
+class OregonVsMeasurementIntervalsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.OregonVsMeasurementIntervals.objects.all()
+    serializer_class = serializers.OregonVsMeasurementIntervalsSerializer
+
+class OregonNehrpSiteClassSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.OregonNehrpSiteClass.objects.all()
+    serializer_class = serializers.OregonNehrpSiteClassSerializer
+
+class OregonLiquefactionSusceptibilitySet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.OregonLiquefactionSusceptibility.objects.all()
+    serializer_class = serializers.OregonLiquefactionSusceptibilitySerializer
+
+class HospitalSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.Hospital.objects.all()
+    serializer_class = serializers.HospitalSerializer
+
+class CountiesAoiSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.CountiesAoi.objects.all()
+    serializer_class = serializers.CountiesAoiSerializer
+
+class CommunityCentersSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.CommunityCenters.objects.all()
+    serializer_class = serializers.CommunityCentersSerializer
+
+class CensusBgAoiSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    """
+    queryset = preexisting_models.CensusBgAoi.objects.all()
+    serializer_class = serializers.CensusBgAoiSerializer
