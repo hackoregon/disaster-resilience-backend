@@ -10,9 +10,6 @@ services:
 install:
   - pip install --upgrade awscli
 
-#before_script:
-#  - bin/build.sh -p
-
 script:
   - bin/build.sh -p
   - bin/test.sh -p
@@ -21,7 +18,6 @@ after_success:
   - bin/docker-push.sh
 
 #deploy:
-#  - bin/docker-push.sh
 
 notifications:
   slack:
