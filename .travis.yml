@@ -7,14 +7,13 @@ install:
   - pip install --upgrade --user awscli
 
 script:
-  - './bin/build.sh -p'
-  - './bin/test.sh -p'
+  - ./bin/build.sh -p
+  - ./bin/test.sh -p
 
 after_success:
-  - ./disaster-resilience-backend/bin/docker-push.sh
+  - ./bin/docker-push.sh
 
-#notifications:
+notifications:
 #  slack:
 #    rooms:
-#      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#general
-#      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#random
+#      - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#disaster-resilience-backend
