@@ -3,12 +3,10 @@ from api.models import preexisting_models
 
 class NeighborhoodUnitsTestCase(TestCase):
     def setUp(self):
-        preexisting_models.NeighborhoodUnits.objects.create(name="lion", sound="roar")
-        preexisting_models.NeighborhoodUnits.objects.create(name="cat", sound="meow")
+        #preexisting_models.NeighborhoodUnits.objects.create()
+        pass
 
-    def test_animals_can_speak(self):
-        """Animals that can speak are correctly identified"""
-        lion = preexisting_models.NeighborhoodUnits.objects.get(name="lion")
-        cat = preexisting_models.NeighborhoodUnits.objects.get(name="cat")
-        self.assertEqual(lion.speak(), 'The lion says "roar"')
-        self.assertEqual(cat.speak(), 'The cat says "meow"')
+    def test_example(self):
+        self.assertTrue(True)
+        str = "equal";
+        self.assertEqual(str, str)
