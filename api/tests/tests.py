@@ -8,5 +8,3 @@ class NeighborhoodUnitsTestCase(TestCase):
 
     def test_example(self):
         self.assertTrue(True)
-        str = "equal";
-        self.assertEqual(str, str)
