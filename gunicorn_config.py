@@ -21,6 +21,21 @@
 bind = ':8000'
 backlog = 2048
 
+
+#
+# Server Mechanics
+#
+#   preload_app
+#
+#       Load application code before the worker processes are forked.
+#
+#       By preloading an application you can save some RAM resources as well as
+#       speed up server boot times. Although, if you defer application loading 
+#       to each worker process, you can reload your application code easily by 
+#       restarting workers.
+
+preload_app = True
+
 #
 # Worker processes
 #
