@@ -16,7 +16,7 @@ script:
   - bin/test.sh -p
 
 after_success:
-  - bin/docker-push.sh
+  - bin/deploy.sh
 
 #deploy:
 
