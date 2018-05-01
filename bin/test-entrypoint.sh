@@ -12,6 +12,4 @@ done
 
 >&2 echo "Postgres is up"
 
-# echo Debug: $DEBUG
-
-python manage.py test --nomigrations
+python manage.py test --nomigrations --no-input --keepdb
