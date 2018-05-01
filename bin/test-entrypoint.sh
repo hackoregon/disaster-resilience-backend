@@ -12,4 +12,4 @@ done
 
 >&2 echo "Postgres is up"
 
-python manage.py test --nomigrations --no-input --keepdb
+python -Wall manage.py test --nomigrations --noinput --keepdb --parallel

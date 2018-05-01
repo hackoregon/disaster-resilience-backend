@@ -25,5 +25,6 @@ import api
 urlpatterns = [
     path('api/', include('api.urls')),
     path('schema/', schema_view),
+    # disable Django admin interface
     #path('admin/', admin.site.urls),
 ]
