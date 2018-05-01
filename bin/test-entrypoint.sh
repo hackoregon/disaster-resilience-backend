@@ -1,7 +1,6 @@
 #!/bin/bash
 export PATH=$PATH:~/.local/bin
 
-
 set -e
 
 export PGPASSWORD=$POSTGRES_PASSWORD
@@ -12,12 +11,7 @@ do
 done
 
 >&2 echo "Postgres is up"
+
 # echo Debug: $DEBUG
 
-# Collect static files
-
-# echo "Migrate"
-# ./manage.py migrate
-
-
-./manage.py test --nomigrations
+python manage.py test --nomigrations
