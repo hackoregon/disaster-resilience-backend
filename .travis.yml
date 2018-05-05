@@ -19,7 +19,6 @@ after_success:
   - bin/deploy.sh
 
 # example of how to send notifications for slack integration
-notifications:
-  slack:
-    rooms:
-      #- hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#disaster-resilience  
+slack:
+  rooms:
+    - hackoregon2018:0hiZjZlexw6dfsIDpN4SsXls#backend-exemplar
