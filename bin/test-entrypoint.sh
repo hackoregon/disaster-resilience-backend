@@ -12,4 +12,8 @@ done
 
 >&2 echo "Postgres is up"
 
+# Collect static files
+echo "Collect static files"
+python -Wall manage.py collectstatic --noinput
+
 python -Wall manage.py test --nomigrations --noinput --keepdb #--parallel
