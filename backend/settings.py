@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 if DEBUG == True:
 
     INSTALLED_APPS = [
+        'test_without_migrations',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -44,11 +45,11 @@ if DEBUG == True:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
-        'test_without_migrations',
         ]
 
 else:
     INSTALLED_APPS = [
+        'test_without_migrations',
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -60,7 +61,6 @@ else:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
-        'test_without_migrations',
         ]
 
 MIDDLEWARE = [
@@ -101,6 +101,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
+        #'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'NAME': os.environ.get('POSTGRES_NAME'),

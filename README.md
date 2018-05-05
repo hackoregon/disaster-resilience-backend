@@ -37,6 +37,12 @@ At this point the API is exposed at an endpoint on your local machine; point a c
 
 _coming soon_
 
+## Branches
+
+1. `master` - not used
+2. `staging` - deploy to AWS
+3. `development` - active development
+
 ## History
 
 This repo represents the work of many members of the Hack Oregon project team. The roots of this work began with the [2017 backend-service-pattern](https://github.com/hackoregon/backend-service-pattern), the work of the DevOps and platform teams, and the APIs deployed for the 2017 seasons.
@@ -49,3 +55,5 @@ The current implementation's application and database docker images were generat
 * Nathan Miller ([nam20485](https://github.com/nam20485))
 * M. Edward (Ed) Borasky ([znmeb](https://github.com/znmeb))
 * Moss Drake ([mxmoss](https://github.com/mxmoss))
+* Brian Grant ([bhgrant8](https://github.com/bhgrant8), [BrianHGrant](https://github.com/BrianHGrant))
+* Mike Lonergan ([mikethecanuck](https://github.com/mikethecanuck))
