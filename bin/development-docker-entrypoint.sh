@@ -16,13 +16,13 @@ done
 echo Debug: $DEBUG
 # Collect static files
 echo "Collect static files"
-./manage.py collectstatic --noinput
+python -Wall manage.py collectstatic --noinput
 
 echo "Make migrations"
-./manage.py makemigrations
+python -Wall manage.py makemigrations
 
 echo "Migrate"
-./manage.py migrate
+python -Wall manage.py migrate
 
 echo "Run server..."
-./manage.py runserver 0.0.0.0:8000
+python -Wall manage.py runserver 0.0.0.0:8000

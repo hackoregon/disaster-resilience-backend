@@ -6,14 +6,18 @@ if [ $# == 0 ]; then usage; fi
 while getopts ":dp" opt; do
     case "$opt" in
         d)
-          docker-compose -f development-docker-compose.yml -p tests run --entrypoint /code/bin/test-entrypoint.sh  -p 8000 --rm api_development
-          echo "Stopping test db container"
-          docker stop tests_db_development_1
-          echo "Removing test db container"
-          docker rm tests_db_development_1
-           ;;
+          docker-compose -f development-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh api_development -p 8000
+          #echo "Stopping test db container"
+          #docker stop api_development
+          #echo "Removing test db container"
+          #docker rm api_development
+          ;;
         p)
-          echo "still needs building"
+          docker-compose -f production-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh api_production -p 8000
+          #echo "Stopping test db container"
+          #docker stop api_production
+          #echo "Removing test db container"
+          #docker rm api_production
           ;;
         *)
           usage

@@ -16,9 +16,8 @@ done
 
 echo Debug: $DEBUG
 
+python -Wall manage.py collectstatic --noinput
 
-./manage.py collectstatic --noinput
+python -Wall manage.py migrate
 
-python manage.py migrate
-
-gunicorn crash_data_api.wsgi -c gunicorn_config.py
+gunicorn $PROJECT_NAME.wsgi -c gunicorn_config.py
