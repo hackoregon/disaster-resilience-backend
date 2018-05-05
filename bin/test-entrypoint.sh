@@ -14,6 +14,6 @@ done
 
 # Collect static files
 echo "Collect static files"
-python manage.py collectstatic --noinput
+python -Wall manage.py collectstatic --noinput
 
-python manage.py test --nomigrations --noinput --keepdb #--parallel
+python -Wall manage.py test --nomigrations --noinput --keepdb #--parallel

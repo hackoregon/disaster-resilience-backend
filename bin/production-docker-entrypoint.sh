@@ -18,6 +18,6 @@ echo Debug: $DEBUG
 
 python -Wall manage.py collectstatic --noinput
 
-python -Wall manage.py migrate
+#python -Wall manage.py migrate
 
 gunicorn $PROJECT_NAME.wsgi -c gunicorn_config.py
