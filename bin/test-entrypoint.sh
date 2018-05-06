@@ -1,7 +1,8 @@
 #!/bin/bash
 export PATH=$PATH:~/.local/bin
 
-
+# http://linuxcommand.org/lc3_man_pages/seth.html:
+# -e  Exit immediately if a command exits with a non-zero status.
 set -e
 
 export PGPASSWORD=$POSTGRES_PASSWORD
@@ -12,12 +13,9 @@ do
 done
 
 >&2 echo "Postgres is up"
-# echo Debug: $DEBUG
 
 # Collect static files
+echo "Collect static files"
+python -Wall manage.py collectstatic --noinput
 
-# echo "Migrate"
-# ./manage.py migrate
-
-
-./manage.py test --nomigrations
+python -Wall manage.py test --nomigrations --noinput --keepdb #--parallel
