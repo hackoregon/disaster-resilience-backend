@@ -3,6 +3,8 @@
 # wait-for-postgres.sh
 # https://docs.docker.com/compose/startup-order/
 
+# http://linuxcommand.org/lc3_man_pages/seth.html:
+# -e  Exit immediately if a command exits with a non-zero status.
 set -e
 
 export PGPASSWORD=$POSTGRES_PASSWORD
