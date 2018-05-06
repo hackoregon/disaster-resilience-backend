@@ -22,3 +22,5 @@ RUN pip install -r geodjango.txt
 
 RUN python
 COPY . /code/
+
+ENTRYPOINT [ "/code/bin/production-docker-entrypoint.sh" ]
