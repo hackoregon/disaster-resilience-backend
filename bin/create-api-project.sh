@@ -1,5 +1,6 @@
 #! /bin/bash
 
+# # http://linuxcommand.org/lc3_man_pages/seth.html:
 set -euo pipefail
 
 # Grab environment variables
