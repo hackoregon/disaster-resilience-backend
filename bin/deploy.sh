@@ -6,7 +6,8 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     # Push only if we're testing the master branch
     if [ "$TRAVIS_BRANCH" == "master" ]; then
 
-        export PATH=$PATH:$HOME/.local/bin
+        # remove until such time as anybody can remember why it is here
+        # export PATH=$PATH:$HOME/.local/bin
 
         echo Getting the ECR login...
         eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
