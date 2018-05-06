@@ -17,9 +17,9 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         
         #echo Running ecs-deploy.sh script...
         bin/ecs-deploy.sh  \
-           -n "$ECS_SERVICE_NAME" \
-           -c "$ECS_CLUSTER"   \
-           -i "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest \
+           --service-name "$ECS_SERVICE_NAME" \
+           --cluster "$ECS_CLUSTER"   \
+           --image "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest \
            --timeout 300
     else
         echo "Skipping deploy because branch is not master"
