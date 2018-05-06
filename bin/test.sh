@@ -13,7 +13,7 @@ while getopts ":dp" opt; do
           #docker rm api_development
           ;;
         p)
-          docker-compose -f production-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh api_production -p 8000
+          docker-compose -f production-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh $DOCKER_SERVICE -p 8000
           #echo "Stopping test db container"
           #docker stop api_production
           #echo "Removing test db container"
