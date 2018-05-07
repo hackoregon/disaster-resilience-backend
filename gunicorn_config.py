@@ -34,7 +34,7 @@ backlog = 2048
 #       to each worker process, you can reload your application code easily by 
 #       restarting workers.
 
-preload_app = True
+preload_app = False
 
 #
 # Worker processes
