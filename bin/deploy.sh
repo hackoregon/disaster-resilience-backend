@@ -11,6 +11,9 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
         echo Getting the ECR login...
         eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+
+        echo Running docker tag command...
+        docker tag "$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest
         
         echo Running docker push command...
         docker push "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest
