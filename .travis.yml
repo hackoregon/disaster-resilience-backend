@@ -15,7 +15,7 @@ script:
   - bin/test.sh -p
 
 after_success:
-  - bin/deploy.she
+  - bin/deploy.sh
 
 notifications:
   slack:
