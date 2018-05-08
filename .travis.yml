@@ -12,10 +12,10 @@ install:
 
 script:
   - bin/build.sh -p
-#  - bin/test.sh -p
+  - bin/test.sh -p
 
 after_success:
-  - bin/deploy.sh
+  - bin/deploy.she
 
 notifications:
   slack:
