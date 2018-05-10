@@ -11,13 +11,18 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
         echo Getting the ECR login...
         eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
-        
-        echo Running docker tag command...
-        docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":"$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER"
-        docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
 
-        echo Running docker push command...
+        # docker tag test:latest <repo>/<user>/test:latest
+        # docker push <repo>/<user>/test:latest
+
+        # docker tag test:0.2 <repo>/<user>/test:0.2
+        # docker push <repo>/<user>/test:0.2
+        
+        docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":"$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER"      
         docker push "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":"$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER"
+
+        docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
+        docker push "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
 
         #docker tag "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":"$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER" "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
         
