@@ -13,16 +13,16 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
 
         echo Running docker tag command...
-        docker tag "$DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest
+        docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
         
         echo Running docker push command...
-        docker push "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest
+        docker push "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
         
         #echo Running ecs-deploy.sh script...
         bin/ecs-deploy.sh  \
            --service-name "$ECS_SERVICE_NAME" \
            --cluster "$ECS_CLUSTER"   \
-           --image "$DOCKER_REPO"/"$DEPLOY_TARGET"/"$DOCKER_IMAGE":latest \
+           --image "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest \
            --timeout 300
     #else
     #    echo "Skipping deploy because branch is not master"
