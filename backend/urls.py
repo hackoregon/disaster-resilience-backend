@@ -16,15 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_swagger.views import get_swagger_view
-
-#schema view
-schema_view = get_swagger_view(title='Backend API')
+from rest_framework.documentation import include_docs_urls
 
 import api
+
+api_title = 'Backend API'
+
+# schema view
+schema_view = get_swagger_view(title=api_title)
 
 urlpatterns = [
     path('api/', include('api.urls')),
     path('schema/', schema_view),
+    path('docs/', include_docs_urls(title=api_title))
+    
     # disable Django admin interface
     #path('admin/', admin.site.urls),
 ]
