@@ -174,6 +174,8 @@ STATIC_URL = '/static/'
 
 # custom test runner to toggle between Managed=True and Managed=False for models handling test db
 #TEST_RUNNER = 'api.utils.UnManagedModelTestRunner'
+
+# http://django-testing-docs.readthedocs.io/en/latest/coverage.html
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Tell nose to measure coverage on the 'api' app
