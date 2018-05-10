@@ -26,9 +26,9 @@ api_title = 'Disaster Resilience Backend API'
 schema_view = get_swagger_view(title=api_title)
 
 urlpatterns = [
-    path('api/', include('api.urls')),
+    path('api/',    include('api.urls')),
     path('schema/', schema_view),
-    path('docs/', include_docs_urls(title=api_title))
+    path('docs/',   include_docs_urls(title=api_title))
     
     # disable Django admin interface
     #path('admin/', admin.site.urls),

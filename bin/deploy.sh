@@ -13,9 +13,11 @@ if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
         eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
 
         # tag with branch and travis build number then push
+        echo Tagging with "$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER"
         docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":"$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER"      
         docker push "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":"$TRAVIS_BRANCH"-"$TRAVIS_BUILD_NUMBER"
 
+        echo Tagging with "latest"
         # tag with "latest" then push
         docker tag "$PRODUCTION_DOCKER_IMAGE":latest "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
         docker push "$DOCKER_REPO"/"$DOCKER_REPO_NAMESPACE"/"$PRODUCTION_DOCKER_IMAGE":latest
