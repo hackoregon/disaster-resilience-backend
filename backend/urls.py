@@ -20,7 +20,7 @@ from rest_framework.documentation import include_docs_urls
 
 import api
 
-api_title = 'Backend API'
+api_title = 'Disaster Resilience Backend API'
 
 # schema view
 schema_view = get_swagger_view(title=api_title)
