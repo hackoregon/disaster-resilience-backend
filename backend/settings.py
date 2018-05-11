@@ -45,6 +45,7 @@ if DEBUG == True:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
+        'django_nose',
         ]
 
 else:
@@ -61,6 +62,7 @@ else:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
+        'django_nose',
         ]
 
 MIDDLEWARE = [
@@ -172,6 +174,13 @@ STATIC_URL = '/static/'
 
 # custom test runner to toggle between Managed=True and Managed=False for models handling test db
 #TEST_RUNNER = 'api.utils.UnManagedModelTestRunner'
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'api' app
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=api',
+]
 
 #rest framework settings for API
 REST_FRAMEWORK = {
