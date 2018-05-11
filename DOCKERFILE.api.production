@@ -9,6 +9,7 @@ RUN apt-get update \
     binutils \
     gdal-bin \
     libproj-dev \
+    apt-utils \
   && apt-get clean
 
 # create and populate /code

@@ -10,6 +10,7 @@ RUN apt-get update \
     gdal-bin \
     libproj-dev \
     postgresql-client-9.6 \
+    apt-utils \
   && apt-get clean
 
 # create and populate /code
