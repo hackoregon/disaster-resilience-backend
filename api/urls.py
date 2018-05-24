@@ -37,6 +37,12 @@ router.register(r'OregonVsMeasurementIntervals', views.OregonVsMeasurementInterv
 router.register(r'OregonVsMeasurementSites', views.OregonVsMeasurementSitesSet)
 router.register(r'SubstationPortland', views.SubstationPortlandSet)
 router.register(r'UnreinforcedMasonryBuildings', views.UnreinforcedMasonryBuildingsSet)
+router.register(r'Address', views.AddressSet)
+router.register(r'FireSta', views.FireStaSet)
+router.register(r'Schools', views.SchoolsSet)
+router.register(r'NeighborhoodsRegions', views.NeighborhoodsRegionsSet)
+router.register(r'MajorRiverBridges', views.MajorRiverBridgesSet)
+router.register(r'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', views.BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSet)
 
 
 urlpatterns = [
