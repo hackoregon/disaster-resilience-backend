@@ -157,3 +157,37 @@ class ServicesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Services
         fields = '__all__'
+
+class AddressSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.Address
+        fields = '__all__'
+
+class FireStaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.FireSta
+        fields = '__all__'
+
+		
+class SchoolsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.Schools
+        fields = '__all__'
+
+
+class NeighborhoodsRegionsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.NeighborhoodsRegions
+        fields = '__all__'
+
+
+class MajorRiverBridgesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.MajorRiverBridges
+        fields = '__all__'
+
+
+class BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.BasicEarthquakeEmergencyCommunicationNodeBeecnLocations
+        fields = '__all__'

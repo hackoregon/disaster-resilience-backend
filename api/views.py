@@ -241,3 +241,46 @@ class CensusBgAoiSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.CensusBgAoi.objects.all()
     serializer_class = serializers.CensusBgAoiSerializer
+	
+class AddressSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows Address to be viewed or listed.
+    """
+    queryset = preexisting_models.Address.objects.all()
+    serializer_class = serializers.AddressSerializer
+
+class FireStaSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows FireSta to be viewed or listed.
+    """
+    queryset = preexisting_models.FireSta.objects.all()
+    serializer_class = serializers.FireStaSerializer
+	
+class SchoolsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows Schools to be viewed or listed.
+    """
+    queryset = preexisting_models.Schools.objects.all()
+    serializer_class = serializers.SchoolsSerializer
+
+class NeighborhoodsRegionsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows NeighborhoodsRegionsto be viewed or listed.
+    """
+    queryset = preexisting_models.NeighborhoodsRegions.objects.all()
+    serializer_class = serializers.NeighborhoodsRegionsSerializer
+
+class MajorRiverBridgesSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows MajorRiverBridgesbe viewed or listed.
+    """
+    queryset = preexisting_models.MajorRiverBridges.objects.all()
+    serializer_class = serializers.MajorRiverBridgesSerializer
+
+class BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows BasicEarthquakeEmergencyCommunicationNodeBeecnLocations to be viewed or listed.
+    """
+    queryset = preexisting_models.BasicEarthquakeEmergencyCommunicationNodeBeecnLocations.objects.all()
+    serializer_class = serializers.BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSerializer
+

@@ -1015,3 +1015,132 @@ class UnreinforcedMasonryBuildings(models.Model):
     class Meta:
         managed = False
         db_table = 'unreinforced_masonry_buildings'
+
+class Address(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    objectid = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    address_id = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    add_num = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    add_num_ch = models.CharField(max_length=80, blank=True, null=True)
+    leading_ze = models.CharField(max_length=80, blank=True, null=True)
+    str_predir = models.CharField(max_length=80, blank=True, null=True)
+    str_name = models.CharField(max_length=80, blank=True, null=True)
+    str_type_c = models.CharField(max_length=80, blank=True, null=True)
+    str_postdi = models.CharField(max_length=80, blank=True, null=True)
+    str_nm_ful = models.CharField(max_length=80, blank=True, null=True)
+    unit_value = models.CharField(max_length=80, blank=True, null=True)
+    add_full = models.CharField(max_length=80, blank=True, null=True)
+    city = models.CharField(max_length=80, blank=True, null=True)
+    state = models.CharField(max_length=80, blank=True, null=True)
+    state_abbr = models.CharField(max_length=80, blank=True, null=True)
+    zip_code = models.CharField(max_length=80, blank=True, null=True)
+    zip4 = models.CharField(max_length=80, blank=True, null=True)
+    juris = models.CharField(max_length=80, blank=True, null=True)
+    county = models.CharField(max_length=80, blank=True, null=True)
+    status_mar = models.CharField(max_length=80, blank=True, null=True)
+    state_id = models.CharField(max_length=80, blank=True, null=True)
+    tlid = models.CharField(max_length=80, blank=True, null=True)
+    source = models.CharField(max_length=80, blank=True, null=True)
+    x = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    y = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'address'
+
+class FireSta(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    station = models.CharField(max_length=6, blank=True, null=True)
+    address = models.CharField(max_length=38, blank=True, null=True)
+    city = models.CharField(max_length=28, blank=True, null=True)
+    district = models.CharField(max_length=40, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'fire_sta'
+
+class BasicEarthquakeEmergencyCommunicationNodeBeecnLocations(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    objectid = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    hub_name = models.CharField(max_length=80, blank=True, null=True)
+    site_name = models.CharField(max_length=80, blank=True, null=True)
+    location = models.CharField(max_length=80, blank=True, null=True)
+    site_owner = models.CharField(max_length=80, blank=True, null=True)
+    x_coord = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    y_coord = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    map_id = models.CharField(max_length=80, blank=True, null=True)
+    barrier_id = models.CharField(max_length=80, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'basic_earthquake_emergency_communication_node_beecn_locations'
+
+
+class MajorRiverBridges(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    objectid = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    objectid_1 = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    name = models.CharField(max_length=80, blank=True, null=True)
+    paved = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    shape_leng = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    shape_area = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    shape_le_1 = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'major_river_bridges'
+
+
+class NeighborhoodsRegions(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    objectid = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    name = models.CharField(max_length=80, blank=True, null=True)
+    commplan = models.CharField(max_length=80, blank=True, null=True)
+    shared = models.CharField(max_length=80, blank=True, null=True)
+    coalit = models.CharField(max_length=80, blank=True, null=True)
+    horz_vert = models.CharField(max_length=80, blank=True, null=True)
+    maplabel = models.CharField(max_length=80, blank=True, null=True)
+    id = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
+    shape_leng = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    shape_area = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'neighborhoods_regions'
+
+
+class Schools(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    school_id = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
+    schinstid = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
+    distinstid = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
+    ncesschid = models.DecimalField(max_digits=12, decimal_places=0, blank=True, null=True)
+    ncesdistid = models.DecimalField(max_digits=7, decimal_places=0, blank=True, null=True)
+    site_id = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
+    primaryuse = models.DecimalField(max_digits=3, decimal_places=0, blank=True, null=True)
+    name = models.CharField(max_length=60, blank=True, null=True)
+    address = models.CharField(max_length=50, blank=True, null=True)
+    address2 = models.CharField(max_length=50, blank=True, null=True)
+    city = models.CharField(max_length=30, blank=True, null=True)
+    state = models.CharField(max_length=2, blank=True, null=True)
+    zipcode = models.CharField(max_length=5, blank=True, null=True)
+    zip4 = models.CharField(max_length=4, blank=True, null=True)
+    phone = models.CharField(max_length=12, blank=True, null=True)
+    level_no = models.DecimalField(max_digits=3, decimal_places=0, blank=True, null=True)
+    level_name = models.CharField(max_length=30, blank=True, null=True)
+    dist_no = models.CharField(max_length=10, blank=True, null=True)
+    district = models.CharField(max_length=30, blank=True, null=True)
+    grade = models.CharField(max_length=8, blank=True, null=True)
+    type = models.CharField(max_length=7, blank=True, null=True)
+    county = models.CharField(max_length=30, blank=True, null=True)
+    updatedate = models.DateField(blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'schools'
