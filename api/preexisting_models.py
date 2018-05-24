@@ -377,9 +377,13 @@ class Jurisdictions(models.Model):
         db_table = 'jurisdictions'
 
 
-class LossJurisdictionCszM9P0Dry(models.Model):
-    objectid = models.AutoField(primary_key=True)
+class QuakeLossView(models.Model):
+    objectid = models.IntegerField(primary_key=True)
+    quake_cd = models.TextField(blank=True, null=True, help_text='csz_m9p0 = Cascadian Subduction Zone quake, phf_m6p8= Portland Hills Fault')
+    condition_cd = models.TextField(blank=True, null=True, help_text='wet or dry conditions')
+    area_type_cd = models.TextField(blank=True, null=True, help_text='By neighborhood_unit or by jurisdiction')
     jurisdiction = models.CharField(max_length=100, blank=True, null=True)
+    nuid = models.IntegerField(blank=True, null=True)
     bldgloss = models.FloatField(blank=True, null=True)
     bldg_lr = models.FloatField(blank=True, null=True)
     contentloss = models.FloatField(blank=True, null=True)
@@ -402,212 +406,9 @@ class LossJurisdictionCszM9P0Dry(models.Model):
     pdscomplete = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'loss_jurisdiction_csz_m9p0_dry'
-
-
-class LossJurisdictionCszM9P0Wet(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    jurisdiction = models.CharField(max_length=100, blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.FloatField(blank=True, null=True)
-    debris = models.FloatField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_jurisdiction_csz_m9p0_wet'
-
-
-class LossJurisdictionPhfM6P8Dry(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    jurisdiction = models.CharField(max_length=100, blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.FloatField(blank=True, null=True)
-    debris = models.FloatField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_jurisdiction_phf_m6p8_dry'
-
-
-class LossJurisdictionPhfM6P8Wet(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    jurisdiction = models.CharField(max_length=100, blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.FloatField(blank=True, null=True)
-    debris = models.FloatField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_jurisdiction_phf_m6p8_wet'
-
-
-class LossNeighborhoodUnitCszM9P0Dry(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    nuid = models.SmallIntegerField(blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.IntegerField(blank=True, null=True)
-    debris = models.IntegerField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_neighborhood_unit_csz_m9p0_dry'
-
-
-class LossNeighborhoodUnitCszM9P0Wet(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    nuid = models.SmallIntegerField(blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.IntegerField(blank=True, null=True)
-    debris = models.IntegerField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_neighborhood_unit_csz_m9p0_wet'
-
-
-class LossNeighborhoodUnitPhfM6P8Dry(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    nuid = models.SmallIntegerField(blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.IntegerField(blank=True, null=True)
-    debris = models.IntegerField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_neighborhood_unit_phf_m6p8_dry'
-
-
-class LossNeighborhoodUnitPhfM6P8Wet(models.Model):
-    objectid = models.AutoField(primary_key=True)
-    nuid = models.SmallIntegerField(blank=True, null=True)
-    bldgloss = models.FloatField(blank=True, null=True)
-    bldg_lr = models.FloatField(blank=True, null=True)
-    contentloss = models.IntegerField(blank=True, null=True)
-    debris = models.IntegerField(blank=True, null=True)
-    displacedpop = models.FloatField(blank=True, null=True)
-    casdaytotal = models.FloatField(blank=True, null=True)
-    casdayl1 = models.FloatField(blank=True, null=True)
-    casdayl2 = models.FloatField(blank=True, null=True)
-    casdayl3 = models.FloatField(blank=True, null=True)
-    casdayl4 = models.FloatField(blank=True, null=True)
-    casnighttotal = models.FloatField(blank=True, null=True)
-    casnightl1 = models.FloatField(blank=True, null=True)
-    casnightl2 = models.FloatField(blank=True, null=True)
-    casnightl3 = models.FloatField(blank=True, null=True)
-    casnightl4 = models.FloatField(blank=True, null=True)
-    pdsnone = models.IntegerField(blank=True, null=True)
-    pdsslight = models.IntegerField(blank=True, null=True)
-    pdsmoderate = models.IntegerField(blank=True, null=True)
-    pdsextensive = models.IntegerField(blank=True, null=True)
-    pdscomplete = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'loss_neighborhood_unit_phf_m6p8_wet'
-
+#        managed = False
+        db_table = 'quake_loss_view'
+		
 
 class NeighborhoodUnits(models.Model):
     objectid = models.AutoField(primary_key=True)

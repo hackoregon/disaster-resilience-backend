@@ -45,68 +45,14 @@ class JurisdictionsSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.JurisdictionsSerializer
 
 
-class LossJurisdictionCszM9P0DrySet(viewsets.ReadOnlyModelViewSet):
+class QuakeLossViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
+    DOGAMI 2018 data indicating quake damages depending on 
+	the type of quake (CSZ or PHF) and dry or wet conditions.
+	The data can be viewed by Jurisdiction or Portland Neighborhood
     """
-    queryset = preexisting_models.LossJurisdictionCszM9P0Dry.objects.all()
-    serializer_class = serializers.LossJurisdictionCszM9P0DrySerializer
-
-
-class LossJurisdictionCszM9P0WetSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossJurisdictionCszM9P0Wet.objects.all()
-    serializer_class = serializers.LossJurisdictionCszM9P0WetSerializer
-
-
-class LossJurisdictionPhfM6P8DrySet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossJurisdictionPhfM6P8Dry.objects.all()
-    serializer_class = serializers.LossJurisdictionPhfM6P8DrySerializer
-
-
-class LossJurisdictionPhfM6P8WetSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossJurisdictionPhfM6P8Wet.objects.all()
-    serializer_class = serializers.LossJurisdictionPhfM6P8WetSerializer
-
-
-class LossNeighborhoodUnitCszM9P0DrySet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossNeighborhoodUnitCszM9P0Dry.objects.all()
-    serializer_class = serializers.LossNeighborhoodUnitCszM9P0DrySerializer
-
-
-class LossNeighborhoodUnitCszM9P0WetSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossNeighborhoodUnitCszM9P0Wet.objects.all()
-    serializer_class = serializers.LossNeighborhoodUnitCszM9P0WetSerializer
-
-
-class LossNeighborhoodUnitPhfM6P8DrySet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossNeighborhoodUnitPhfM6P8Dry.objects.all()
-    serializer_class = serializers.LossNeighborhoodUnitPhfM6P8DrySerializer
-
-
-class LossNeighborhoodUnitPhfM6P8WetSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows NeighborhoodUnits to be viewed or listed.
-    """
-    queryset = preexisting_models.LossNeighborhoodUnitPhfM6P8Wet.objects.all()
-    serializer_class = serializers.LossNeighborhoodUnitPhfM6P8WetSerializer
+    queryset = preexisting_models.QuakeLossView.objects.all()
+    serializer_class = serializers.QuakeLossViewSerializer
 
 
 class PhfM6P8BedrockGroundmotionSet(viewsets.ReadOnlyModelViewSet):
