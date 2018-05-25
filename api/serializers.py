@@ -156,3 +156,8 @@ class BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSerializer(serializ
     class Meta:
         model = preexisting_models.BasicEarthquakeEmergencyCommunicationNodeBeecnLocations
         fields = '__all__'
+
+class RlisSt180520Serializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.RlisSt180520
+        fields = '__all__'

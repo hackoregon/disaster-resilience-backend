@@ -945,3 +945,15 @@ class Schools(models.Model):
     class Meta:
         managed = False
         db_table = 'schools'
+
+class RlisSt180520(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    fid = models.BigIntegerField(blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    area = models.FloatField(blank=True, null=True)
+    sqmile = models.FloatField(blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'rlis_st_180520'

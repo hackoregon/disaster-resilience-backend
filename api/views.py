@@ -230,3 +230,10 @@ class BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSet(viewsets.ReadOn
     queryset = preexisting_models.BasicEarthquakeEmergencyCommunicationNodeBeecnLocations.objects.all()
     serializer_class = serializers.BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSerializer
 
+class RlisSt180520Set(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows RLIS neighborhood regions to be viewed or listed.
+    """
+    queryset = preexisting_models.RlisSt180520.objects.all()
+    serializer_class = serializers.RlisSt180520Serializer
+
