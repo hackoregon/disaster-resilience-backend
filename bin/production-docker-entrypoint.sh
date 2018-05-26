@@ -10,6 +10,9 @@ echo Debug: $DEBUG
 # Pull in environment variables values from AWS Parameter Store
 /code/bin/get-ssm-parameters.sh
 
+# Temporary troubleshooting
+echo "from entrypoint script DJANGO_SECRET_KEY value is " $DJANGO_SECRET_KEY
+
 python -Wall manage.py collectstatic --noinput
 
 

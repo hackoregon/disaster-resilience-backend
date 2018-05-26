@@ -24,10 +24,6 @@ POSTGRES_USER=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTG
 DJANGO_SECRET_KEY=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/DJANGO_SECRET_KEY --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 POSTGRES_PASSWORD=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTGRES_PASSWORD --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 
-# Verify the values are coming through
-echo "database name is " $POSTGRES_NAME
-echo "django secret key (temporary) is " $DJANGO_SECRET_KEY
-
 # Set environment variables in the container
 export DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
 export POSTGRES_HOST=$POSTGRES_HOST
