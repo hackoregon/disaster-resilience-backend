@@ -19,6 +19,7 @@ POSTGRES_HOST=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_N
 POSTGRES_NAME=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_NAME --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 POSTGRES_PORT=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_PORT --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 POSTGRES_USER=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_USER --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+PROJECT_NAME=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/PROJECT_NAME --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 
 # Get encrypted values
 DJANGO_SECRET_KEY=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/DJANGO_SECRET_KEY --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
@@ -31,3 +32,4 @@ export POSTGRES_NAME=$POSTGRES_NAME
 export POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 export POSTGRES_PORT=$POSTGRES_PORT
 export POSTGRES_USER=$POSTGRES_USER
+export PROJECT_NAME=$PROJECT_NAME
