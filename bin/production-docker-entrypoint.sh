@@ -7,8 +7,8 @@ set -e
 
 echo Debug: $DEBUG
 
-# Pull in environment variables values from AWS Parameter Store
-/code/bin/get-ssm-parameters.sh
+# Pull in environment variables values from AWS Parameter Store, and preserve the exports
+source /code/bin/get-ssm-parameters.sh
 
 # Temporary troubleshooting
 echo "from entrypoint script DJANGO_SECRET_KEY value is " $DJANGO_SECRET_KEY
