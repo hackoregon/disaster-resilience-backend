@@ -12,17 +12,17 @@
 
 EC2_REGION="us-west-2" # unfortunately cannot rely on dynamic env var values that this script is meant to pull in
 NAMESPACE="/production/2018/API" # future-proofing this script for subsequent or past containers
-PROJECT_NAME="disaster-resilience" # must be set to each project's "Final naming convention" from here https://github.com/hackoregon/civic-devops/issues/1
+PROJECT_CANONICAL_NAME="disaster-resilience" # must be set to each project's "Final naming convention" from here https://github.com/hackoregon/civic-devops/issues/1
 
 # Get unencrypted values
-POSTGRES_HOST=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTGRES_HOST --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
-POSTGRES_NAME=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTGRES_NAME --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
-POSTGRES_PORT=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTGRES_PORT --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
-POSTGRES_USER=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTGRES_USER --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+POSTGRES_HOST=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_HOST --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+POSTGRES_NAME=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_NAME --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+POSTGRES_PORT=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_PORT --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+POSTGRES_USER=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_USER --no-with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 
 # Get encrypted values
-DJANGO_SECRET_KEY=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/DJANGO_SECRET_KEY --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
-POSTGRES_PASSWORD=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_NAME"/POSTGRES_PASSWORD --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+DJANGO_SECRET_KEY=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/DJANGO_SECRET_KEY --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
+POSTGRES_PASSWORD=`aws ssm get-parameters --names "$NAMESPACE"/"$PROJECT_CANONICAL_NAME"/POSTGRES_PASSWORD --with-decryption --region $EC2_REGION --output text | awk '{print $4}'`
 
 # Set environment variables in the container
 export DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
