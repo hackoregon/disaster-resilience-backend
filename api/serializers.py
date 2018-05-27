@@ -78,44 +78,9 @@ class JurisdictionsSerializer(serializers.HyperlinkedModelSerializer):
         model = preexisting_models.Jurisdictions
         fields = '__all__'
 
-class LossJurisdictionCszM9P0DrySerializer(serializers.HyperlinkedModelSerializer):
+class QuakeLossViewSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = preexisting_models.LossJurisdictionCszM9P0Dry
-        fields = '__all__'
-
-class LossJurisdictionCszM9P0WetSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossJurisdictionCszM9P0Wet
-        fields = '__all__'
-
-class LossJurisdictionPhfM6P8DrySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossJurisdictionPhfM6P8Dry
-        fields = '__all__'
-
-class LossJurisdictionPhfM6P8WetSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossJurisdictionPhfM6P8Wet
-        fields = '__all__'
-
-class LossNeighborhoodUnitCszM9P0DrySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossNeighborhoodUnitCszM9P0Dry
-        fields = '__all__'
-
-class LossNeighborhoodUnitCszM9P0WetSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossNeighborhoodUnitCszM9P0Wet
-        fields = '__all__'
-
-class LossNeighborhoodUnitPhfM6P8DrySerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossNeighborhoodUnitPhfM6P8Dry
-        fields = '__all__'
-
-class LossNeighborhoodUnitPhfM6P8WetSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = preexisting_models.LossNeighborhoodUnitPhfM6P8Wet
+        model = preexisting_models.QuakeLossView
         fields = '__all__'
 
 class PhfM6P8BedrockGroundmotionSerializer(serializers.HyperlinkedModelSerializer):
@@ -190,4 +155,9 @@ class MajorRiverBridgesSerializer(serializers.HyperlinkedModelSerializer):
 class BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.BasicEarthquakeEmergencyCommunicationNodeBeecnLocations
+        fields = '__all__'
+
+class RlisSt180520Serializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.RlisSt180520
         fields = '__all__'
