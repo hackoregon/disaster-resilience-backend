@@ -171,7 +171,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
+STATIC_URL = '/disaster-resilience/static/'
 
 # custom test runner to toggle between Managed=True and Managed=False for models handling test db
 #TEST_RUNNER = 'api.utils.UnManagedModelTestRunner'

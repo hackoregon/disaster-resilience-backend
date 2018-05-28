@@ -10,10 +10,11 @@ class NeighborhoodUnitsSerializer(GeoFeatureModelSerializer):
         fields = '__all__'
         geo_field = 'wkb_geometry'
 
-class BuildingFootprintsSerializer(serializers.HyperlinkedModelSerializer):
+class BuildingFootprintsSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = preexisting_models.BuildingFootprints 
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class CensusBgAoiSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
