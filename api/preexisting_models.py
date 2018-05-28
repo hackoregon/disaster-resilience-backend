@@ -8,6 +8,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.gis.db.models.fields import GeometryField
 
 
 # class AuthGroup(models.Model):
@@ -425,7 +426,7 @@ class NeighborhoodUnits(models.Model):
     permresidents = models.IntegerField(blank=True, null=True)
     dayoccupants = models.IntegerField(blank=True, null=True)
     nightoccupants = models.IntegerField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField() # This field type is a guess.
 
     class Meta:
         managed = False
