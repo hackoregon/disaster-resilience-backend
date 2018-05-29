@@ -45,6 +45,7 @@ if DEBUG == True:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
+        'rest_framework_gis',
         ]
 
 else:
@@ -61,6 +62,7 @@ else:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
+        'rest_framework_gis',
         ]
 
 MIDDLEWARE = [
@@ -101,8 +103,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
@@ -115,7 +116,7 @@ if DEBUG == False:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django_db_geventpool.backends.postgresql_psycopg2',
+            'ENGINE': 'django_db_geventpool.backends.postgis',
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
             'NAME': os.environ.get('POSTGRES_NAME'),
             'USER': os.environ.get('POSTGRES_USER'),
