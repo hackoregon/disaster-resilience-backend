@@ -29,6 +29,9 @@ router.register(r'MajorRiverBridges', views.MajorRiverBridgesSet)
 router.register(r'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', views.BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSet)
 router.register(r'RlisSt180520', views.RlisSt180520Set)
 router.register(r'POI', views.POISet)
+#
+#   not needed
+#
 #router.register(r'Hydrants', views.HydrantsSet)
 #router.register(r'PointsOfService', views.PointsOfServiceSet)
 #router.register(r'PressureZones', views.PressureZonesSet)
@@ -40,7 +43,5 @@ router.register(r'POI', views.POISet)
 #router.register(r'Services', views.ServicesSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
-    #path('', include('router.urls')),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', include(router.urls)),
 ]

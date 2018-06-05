@@ -1,17 +1,20 @@
 from rest_framework import serializers
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 from api import preexisting_models
 
 
-class NeighborhoodUnitsSerializer(serializers.HyperlinkedModelSerializer):
+class NeighborhoodUnitsSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = preexisting_models.NeighborhoodUnits
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
-class BuildingFootprintsSerializer(serializers.HyperlinkedModelSerializer):
+class BuildingFootprintsSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = preexisting_models.BuildingFootprints 
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class CensusBgAoiSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

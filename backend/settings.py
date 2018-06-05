@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') == "True"
+#DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -45,7 +46,7 @@ if DEBUG == True:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
-        'django_nose',
+        'rest_framework_gis',
         ]
 
 else:
@@ -62,7 +63,7 @@ else:
         'django_filters',
         'rest_framework',
         'rest_framework_swagger',
-        'django_nose',
+        'rest_framework_gis',
         ]
 
 MIDDLEWARE = [
@@ -103,8 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.postgresql',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
@@ -117,7 +117,7 @@ if DEBUG == False:
 
     DATABASES = {
         'default': {
-            'ENGINE': 'django_db_geventpool.backends.postgresql_psycopg2',
+            'ENGINE': 'django_db_geventpool.backends.postgis',
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
             'NAME': os.environ.get('POSTGRES_NAME'),
             'USER': os.environ.get('POSTGRES_USER'),
@@ -170,19 +170,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
+STATIC_URL = '/disaster-resilience/static/'
 
 # custom test runner to toggle between Managed=True and Managed=False for models handling test db
 #TEST_RUNNER = 'api.utils.UnManagedModelTestRunner'
 
-# http://django-testing-docs.readthedocs.io/en/latest/coverage.html
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-# Tell nose to measure coverage on the 'api' app
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=api',
-]
 
 #rest framework settings for API
 REST_FRAMEWORK = {

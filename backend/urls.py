@@ -20,15 +20,15 @@ from rest_framework.documentation import include_docs_urls
 
 import api
 
-api_title = 'Disaster Resilience Backend API'
+swagger_docs_title = 'Disaster Resilience API'
 
 # schema view
-schema_view = get_swagger_view(title=api_title)
+schema_view = get_swagger_view(title=swagger_docs_title)
 
 urlpatterns = [
-    path('api/',    include('api.urls')),
-    path('schema/', schema_view),
-    path('docs/',   include_docs_urls(title=api_title))
+    path('disaster-resilience/', schema_view),
+    path('disaster-resilience/api/', include('api.urls')),
+    path('disaster-resilience/docs/', include_docs_urls(title=swagger_docs_title)),
     
     # disable Django admin interface
     #path('admin/', admin.site.urls),
