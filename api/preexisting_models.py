@@ -957,3 +957,20 @@ class RlisSt180520(models.Model):
     class Meta:
         managed = False
         db_table = 'rlis_st_180520'
+
+
+class POI(models.Model):
+    ogc_fid = models.AutoField(primary_key=True)
+    type = models.CharField(max_length=20, blank=True, null=True)
+    description_txt = models.CharField(max_length=255, blank=True, null=True)
+    description2_txt = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=2, blank=True, null=True)
+    zipcode = models.CharField(max_length=5, blank=True, null=True)
+    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+
+    class Meta:
+        managed = False
+        db_table = 'POI_view'
+
