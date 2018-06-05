@@ -28,9 +28,9 @@ router.register(r'NeighborhoodsRegions', views.NeighborhoodsRegionsSet)
 router.register(r'MajorRiverBridges', views.MajorRiverBridgesSet)
 router.register(r'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', views.BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSet)
 router.register(r'RlisSt180520', views.RlisSt180520Set)
-
+router.register(r'POI', views.POISet)
 #
-#   not needed?
+#   not needed
 #
 #router.register(r'Hydrants', views.HydrantsSet)
 #router.register(r'PointsOfService', views.PointsOfServiceSet)
