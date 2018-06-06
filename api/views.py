@@ -237,3 +237,10 @@ class RlisSt180520Set(viewsets.ReadOnlyModelViewSet):
     queryset = preexisting_models.RlisSt180520.objects.all()
     serializer_class = serializers.RlisSt180520Serializer
 
+
+class POISet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows points of interest (Hospitals, schools, BEECN sites, etc)
+    """
+    queryset = preexisting_models.POI.objects.all()
+    serializer_class = serializers.POISerializer
