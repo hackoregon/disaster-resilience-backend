@@ -164,3 +164,8 @@ class RlisSt180520Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.RlisSt180520
         fields = '__all__'
+
+class POISerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.POI
+        fields = '__all__'
