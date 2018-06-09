@@ -961,7 +961,7 @@ class RlisSt180520(models.Model):
 
 
 class POI(models.Model):
-    pk_id = models.AutoField(primary_key=True)
+    pk_id = models.CharField(max_length=255, primary_key=True)
     ogc_fid = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
     type = models.CharField(max_length=20, blank=True, null=True)
     description_txt = models.CharField(max_length=255, blank=True, null=True)
