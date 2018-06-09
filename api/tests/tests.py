@@ -26,10 +26,6 @@ class ExampleSimpleTestCase(SimpleTestCase):
     def test_simple_example(self):
         self.assertTrue(True)
 
-# https://docs.djangoproject.com/en/2.0/topics/testing/tools/#transactiontestcase
-class ExampleTransactionTestCase(TransactionTestCase):
-    def test_transaction_example(self):
-        self.assertTrue(True)
 class RootEndpointsTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
