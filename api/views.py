@@ -244,3 +244,10 @@ class POISet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.POI.objects.all()
     serializer_class = serializers.POISerializer
+
+class DisasterNeighborhoodsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+    queryset = preexisting_models.DisasterNeighborhoods.objects.all()
+    serializer_class = serializers.DisasterNeighborhoodsSerializer
