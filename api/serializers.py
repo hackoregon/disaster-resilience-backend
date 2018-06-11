@@ -169,3 +169,8 @@ class POISerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.POI
         fields = '__all__'
+
+class DisasterNeighborhoodsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.DisasterNeighborhoods
+        fields = '__all__'
