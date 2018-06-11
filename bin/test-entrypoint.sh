@@ -9,8 +9,6 @@ set -e
 
 python -Wall manage.py makemigrations
 
-python -Wall manage.py migrate
-
 # Collect static files
 echo "Collect static files"
 python -Wall manage.py collectstatic --noinput
