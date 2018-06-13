@@ -43,4 +43,5 @@ router.register(r'DisasterNeighborhoodView', views.DisasterNeighborhoodViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('latlong_squared/', views.latlong_squared_view),
 ]
