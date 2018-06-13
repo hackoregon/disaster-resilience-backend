@@ -174,3 +174,8 @@ class DisasterNeighborhoodsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.DisasterNeighborhoods
         fields = '__all__'
+
+class DisasterNeighborhoodViewSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.DisasterNeighborhoodView
+        fields = '__all__'
