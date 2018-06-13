@@ -251,3 +251,10 @@ class DisasterNeighborhoodsSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.DisasterNeighborhoods.objects.all()
     serializer_class = serializers.DisasterNeighborhoodsSerializer
+
+class DisasterNeighborhoodViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+    queryset = preexisting_models.DisasterNeighborhoodView.objects.all()
+    serializer_class = serializers.DisasterNeighborhoodViewSerializer
