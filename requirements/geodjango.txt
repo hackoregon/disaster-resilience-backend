@@ -1,1 +1,2 @@
 djangorestframework-gis==0.12.0
+gdal

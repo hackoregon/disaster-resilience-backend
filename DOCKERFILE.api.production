@@ -8,8 +8,11 @@ RUN apt-get update \
   && apt-get install -qqy --no-install-recommends \
     binutils \
     gdal-bin \
+    libgdal-dev \
     libproj-dev \
     apt-utils \
+    python-gdal \
+    python3-gdal \
   && apt-get clean
 
 # create and populate /code
