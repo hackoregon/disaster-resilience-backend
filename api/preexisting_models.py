@@ -1061,7 +1061,14 @@ class DisasterNeighborhoodView(models.Model):
     pgd_total_wet_mean_di = models.CharField(max_length=255, blank=True, null=True)
     pgv_site_min_mmi_txt = models.TextField(blank=True, null=True)
     pgv_site_max_mmi_txt = models.TextField(blank=True, null=True)
+    pgv_site_min_mmi_txt = models.TextField(blank=True, null=True)
+    pgv_site_min_desc = models.TextField(blank=True, null=True)
+    pgv_site_max_mmi_txt = models.TextField(blank=True, null=True)
+    pgv_site_max_desc = models.TextField(blank=True, null=True)
     pgv_site_mean_mmi_txt = models.TextField(blank=True, null=True)
+    pgv_site_mean_desc = models.TextField(blank=True, null=True)
+    census_response_rate = models.CharField(max_length=-1, blank=True, null=True)
+    quadrant = models.CharField(max_length=-1, blank=True, null=True)
 
     class Meta:
         managed = False
