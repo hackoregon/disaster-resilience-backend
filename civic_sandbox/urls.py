@@ -4,5 +4,9 @@ from . import views
 
 urlpatterns = [
     url(r'^slides/poi/', views.poi),
+    url(r'^foundations/shaking/', views.shaking),
+    url(r'^foundations/liquefaction/', views.liquefaction),
+    url(r'^foundations/landslide/', views.landslide),
+            
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
