@@ -13,7 +13,7 @@
 # Copyright (C) 2018, Frederick D. Pearce, get_mapsquare_rasterstats.py
 
 ## Import modules
-import gdal
+from osgeo import gdal
 import geopandas as gpd
 import json
 from osgeo import osr
@@ -26,9 +26,7 @@ from rasterstats import zonal_stats
 ## Define functions
 # ALL parameters defined in dictionary loaded from (default) json config file
 def load_config(fname = "get_mapsquare_rasterstats_CONFIG.json"):
-    with open(fname, "r") as f:
-        params = json.load(f)
-    return params
+    return json_config_data
 
 # Functions for building the map square as a shapely polygon
 def calc_square_lonlat(lon_lat, xy_offset):
@@ -192,6 +190,55 @@ def get_mapsquare_rasterstats(lon, lat):
         return gdf_merge.to_dict()
     elif 'return_geodf' in params:
         return gdf_merge
+
+
+json_config_data = {
+    "raster": {
+        "root": "./CSZ_M9p0_",
+        "names": ["pgv_site", "PGD_landslide_dry", "PGD_landslide_wet", "PGD_liquefaction_wet"],
+        "ext": ".tif"
+    },
+    "geometry": {
+        "from_point": {
+            "xy_offset": 300,
+            "xy_units": "m"
+        }
+    },
+    "zonal_stats": {
+        "layer": 1,
+        "stats": ["count", "min", "max", "mean", "std"]
+    },
+    "stats_classification": {
+        "stats_to_class": ["min", "max", "mean"],
+        "pgv_site": {
+            "levels": [-9999, 0.1, 1.1, 3.4, 8.1, 16, 31, 60, 116, 9999],
+            "level_labels": ["Not felt (I)", "Weak (II-III)", "Light (IV)",
+                             "Moderate (V)", "Strong (VI)", "Very Strong (VII)",
+                             "Severe (VIII)", "Violent (IX)", "Extreme (X)"],
+            "class_name": "Modified Mercalli Intensity",
+            "class_tag": "MMI"
+        },
+        "PGD_landslide_dry": {
+            "levels": [-9999, 0, 10, 30, 100, 9999],
+            "level_labels": ["None", "Low", "Moderate", "High", "Very High"],
+            "class_name": "Landslide Intensity (Dry)",
+            "class_tag": "DI"
+        },
+        "PGD_landslide_wet": {
+            "levels": [-9999, 0, 10, 30, 100, 9999],
+            "level_labels": ["None", "Low", "Moderate", "High", "Very High"],
+            "class_name": "Landslide Intensity (Wet)",
+            "class_tag": "DI"
+        },
+        "PGD_liquefaction_wet": {
+            "levels": [-9999, 0, 10, 30, 100, 9999],
+            "level_labels": ["None", "Low", "Moderate", "High", "Very High"],
+            "class_name": "Liquefaction Intensity (Wet)",
+            "class_tag": "DI"
+        }
+    },
+    "return_dict": {}
+}
 
 ## If run from command line, execute script below here
 if __name__ == "__main__":

@@ -12,7 +12,6 @@ RUN apt-get update \
     libproj-dev \
     apt-utils \
     python-gdal \
-    python3-gdal \
   && apt-get clean
 
 # create and populate /code
@@ -22,6 +21,14 @@ WORKDIR /code
 COPY /requirements/* /code/
 RUN pip install -r production.txt
 RUN pip install -r geodjango.txt
+
+# do some crazy build include mojo
+RUN export CPLUS_INCLUDE_PATH=/usr/include/gdal
+RUN export C_INCLUDE_PATH=/usr/include/gdal
+RUN pip install pygdal==2.1.2.3
+
+RUN pip install geopandas
+RUN pip install rasterstats
 
 RUN python
 COPY . /code/

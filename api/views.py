@@ -3,21 +3,18 @@ from rest_framework import viewsets
 from django.http import JsonResponse, HttpResponseServerError, HttpResponse
 
 from api.models import preexisting_models
-from api import serializers, freds_python_code
+from api import serializers
+from api import mapsquare_rasterstats
 
 
-def latlong_squared_view(request):
-
-    try:
-        # get url params
-        latitude = float(request.GET.get('lat'))
-        longitude = float(request.GET.get('long'))
-
-        data = freds_python_code.freds_function(latitude, longitude)
-
-        return JsonResponse(data)    
-    except:
-        return HttpResponseServerError('something wrent wrong')
+def get_mapsquare_rasterstats_view(request):
+    # get url params
+    latitude = float(request.GET.get('lat'))
+    longitude = float(request.GET.get('long'))
+    # calculate raster stats for square
+    data = mapsquare_rasterstats.get_mapsquare_rasterstats(longitude, latitude)
+    # return as JSON
+    return JsonResponse(data)
 
 
 class NeighborhoodUnitsSet(viewsets.ReadOnlyModelViewSet):
