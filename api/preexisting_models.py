@@ -1069,6 +1069,16 @@ class DisasterNeighborhoodView(models.Model):
     pgv_site_mean_desc = models.TextField(blank=True, null=True)
     census_response_rate = models.CharField(max_length=255, blank=True, null=True)
     quadrant = models.CharField(max_length=255, blank=True, null=True)
+    acres = models.CharField(max_length=255, blank=True, null=True)
+    buildingcount = models.CharField(max_length=255, blank=True, null=True)
+    buildingsquarefeet = models.CharField(max_length=255, blank=True, null=True)
+    buildingcost = models.CharField(max_length=255, blank=True, null=True)
+    buildingweight = models.CharField(max_length=255, blank=True, null=True)
+    contentcost = models.CharField(max_length=255, blank=True, null=True)
+    permanentresidents = models.CharField(max_length=255, blank=True, null=True)
+    dayoccupants = models.CharField(max_length=255, blank=True, null=True)
+    nightoccupants = models.CharField(max_length=255, blank=True, null=True)
+    total_population = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
