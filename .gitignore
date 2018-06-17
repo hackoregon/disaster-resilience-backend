@@ -108,3 +108,4 @@ ENV/
 *.code-workspace
 
 .idea/*
+bin/load_rasters_to_postgres.sh

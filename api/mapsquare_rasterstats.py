@@ -22,6 +22,8 @@ from pyproj import Geod
 from shapely.geometry import Polygon
 # Import modules NOT included in "kitchen-sink", not sure about osgeo...
 from rasterstats import zonal_stats
+from django.db import connection
+
 
 ## Define functions
 # ALL parameters defined in dictionary loaded from (default) json config file
@@ -82,23 +84,45 @@ def get_raster_nodatavalue(rasterfn):
     band = raster.GetRasterBand(1)
     return band.GetNoDataValue()
 
+
+def get_raster(raster_name):
+    #raster = get_raster_from_file(raster_name)
+    raster = get_raster_from_postgis(raster_name)
+    return raster
+
+
+def get_raster_from_file(file_name):
+    raster = gdal.Open(file_name)
+    return raster
+
+cursor = connection.cursor()
+
+def get_raster_from_postgis(raster_name):
+    cursor.execute("SELECT ST_AsGDALRaster(rast, 'GTiff') FROM " + raster_name)
+    
+    result = [
+        row[0] for row in cursor.fetchall()
+    ]
+
+    while type(result) != buffer:
+        result = result[0]
+
+    return result
+
+
 def get_raster_info_crs(raster_file, print_info=True):
     """Print information about raster file, and return its
     spatial reference system using gdal.
     """
-    if print_info:
-        try:
-            print(gdal.Info(raster_file))
-        except:
-            print("Error reading info from raster file = {}".format(raster_file))
-    try:
-        raster = gdal.Open(raster_file)
-    except:
-        print("Error opening raster file = {}".format(raster_file))
-    else:
-        raster_crs = osr.SpatialReference()
-        raster_crs.ImportFromWkt(raster.GetProjection())
-        return raster_crs.ExportToProj4()
+    # if print_info:
+    #     try:
+    #         print(gdal.Info(raster_file))
+    #     except:
+    #        print("Error reading info from raster file = {}".format(raster_file))
+    raster = get_raster(raster_file)
+    raster_crs = osr.SpatialReference()
+    raster_crs.ImportFromWkt(raster.GetProjection())
+    return raster_crs.ExportToProj4()
 
 def transform_gdf_to_crsout(gdf, geom_col, crs_out):
     """Return copy of georeferenced polygon geometries from geopandas dataframe geometry 
@@ -120,6 +144,7 @@ def get_raster_stats_df(geom_ras, df_index, raster_file, raster_name, **kwargs):
     return df_gs
 
 def get_geometry_raster_stats(gdf_merge, raster_params, **zonal_stats_params):
+
     for raster_name in raster_params['names']:
         # Step 3a 
         raster_file = raster_params['root'] + raster_name + raster_params['ext']
@@ -194,9 +219,9 @@ def get_mapsquare_rasterstats(lon, lat):
 
 json_config_data = {
     "raster": {
-        "root": "./CSZ_M9p0_",
+        "root": "CSZ_M9p0_",
         "names": ["pgv_site", "PGD_landslide_dry", "PGD_landslide_wet", "PGD_liquefaction_wet"],
-        "ext": ".tif"
+        "ext": ""
     },
     "geometry": {
         "from_point": {
