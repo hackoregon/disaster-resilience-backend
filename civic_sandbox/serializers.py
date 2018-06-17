@@ -27,3 +27,9 @@ class LandslideSerializer(GeoFeatureModelSerializer):
         model = DisasterNeighborhoodView
         fields = ('id', 'name', 'pgd_landslide_dry_mean_di')
         geo_field = 'wkb_geometry'
+
+class CensusResponseSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = DisasterNeighborhoodView
+        fields = ('id', 'name', 'census_response_rate')
+        geo_field = 'wkb_geometry'

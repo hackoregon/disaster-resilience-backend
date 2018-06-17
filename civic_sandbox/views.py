@@ -1,9 +1,9 @@
 from rest_framework.decorators import api_view
 from django.contrib.gis.geos import GEOSGeometry, MultiPoint, MultiPolygon, MultiLineString
 from .models import POI, DisasterNeighborhoodView
-from .serializers import POISerializer, ShakingSerializer, LandslideSerializer,LiquefactionSerializer
+from .serializers import POISerializer, ShakingSerializer, LandslideSerializer,LiquefactionSerializer, CensusResponseSerializer
 from .helpers import sandbox_view_factory
-from .meta import poi_meta, shaking_meta, landslide_meta, liquefaction_meta
+from .meta import poi_meta, shaking_meta, landslide_meta, liquefaction_meta, census_response_meta
 
 poi = sandbox_view_factory(
   model_class=POI,
@@ -41,4 +41,14 @@ landslide = sandbox_view_factory(
   attributes =landslide_meta['attributes'],
   dates=landslide_meta['dates'],
   )
+
+censusresponse = sandbox_view_factory(
+  model_class=DisasterNeighborhoodView,
+  serializer_class=CensusResponseSerializer,
+  multi_geom_class=MultiPolygon,
+  geom_field='wkb_geometry',
+  attributes =census_response_meta['attributes'],
+  dates=census_response_meta['dates'],
+  )
+
 

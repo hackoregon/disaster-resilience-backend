@@ -139,3 +139,33 @@ landslide_meta = {
     'max_date': None,
     },
   }
+
+census_response_meta = {
+  'attributes': {
+    'primary': {
+      'field': 'census_response_rate',
+      'name': 'Census Response Rate',
+      'visualization': {
+        'type': 'PercentDonut',
+        'comparison_value': None,
+        'comparison_name': None, 
+      },
+    },
+    'secondary': {
+      'field': None,
+      'name': None,
+      'visualization': {
+        'type': 'Text',
+        'comparison_value': None,
+        'comparison_name': None, 
+    },
+  },
+}, 
+    'dates': {
+    'date_attribute': None,
+    'date_granularity': None,
+    'default_date_filter': '2018',
+    'min_date': None,
+    'max_date': None,
+    },
+  }
