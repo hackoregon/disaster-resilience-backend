@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^foundations/shaking/', views.shaking),
     url(r'^foundations/liquefaction/', views.liquefaction),
     url(r'^foundations/landslide/', views.landslide),
+    url(r'^foundations/censusresponse/', views.censusresponse),
             
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
