@@ -164,7 +164,7 @@ census_response_meta = {
     'dates': {
     'date_attribute': None,
     'date_granularity': None,
-    'default_date_filter': '2018',
+    'default_date_filter': '2010',
     'min_date': None,
     'max_date': None,
     },
