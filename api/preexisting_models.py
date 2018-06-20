@@ -1102,6 +1102,7 @@ class DisasterNeighborhoodView(models.Model):
     injuriestotal_day = models.CharField(max_length=255, blank=True, null=True)
     injuriestotal_night = models.CharField(max_length=255, blank=True, null=True)
     displaced_percap = models.CharField(max_length=255, blank=True, null=True)
+    ngeo_json = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
