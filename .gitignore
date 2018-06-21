@@ -108,3 +108,4 @@ ENV/
 *.code-workspace
 
 .idea/*
+env.sh

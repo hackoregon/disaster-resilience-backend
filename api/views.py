@@ -273,3 +273,18 @@ class DisasterNeighborhoodViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.DisasterNeighborhoodView.objects.all()
     serializer_class = serializers.DisasterNeighborhoodViewSerializer
+
+class DisasterNeighborhoodGridSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows calculated stats per neighborhood grid
+    """
+    queryset = preexisting_models.DisasterNeighborhoodGrid.objects.all()
+    serializer_class = serializers.DisasterNeighborhoodGridSerializer
+
+    def get_queryset(self):
+        latitude = float(self.request.GET.get('lat'))
+        longitude = float(self.request.GET.get('long'))
+
+        qs = preexisting_models.DisasterNeighborhoodGrid.objects.filter(x_simple=latitude)
+        qs = qs.filter(y_simple=longitude)
+        return qs

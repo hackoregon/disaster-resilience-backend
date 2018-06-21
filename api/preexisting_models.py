@@ -1107,3 +1107,49 @@ class DisasterNeighborhoodView(models.Model):
     class Meta:
         managed = False
         db_table = 'disaster_neighborhood_view'
+
+class DisasterNeighborhoodGrid(models.Model):
+    id = models.IntegerField(primary_key=True)
+    centroidx = models.CharField(max_length=255, blank=True, null=True)
+    centroidy = models.CharField(max_length=255, blank=True, null=True)
+    x_simple = models.CharField(max_length=255, blank=True, null=True)
+    y_simple = models.CharField(max_length=255, blank=True, null=True)
+    wkb_geometry = GeometryField(blank=True, null=True)
+    pgv_site_count = models.CharField(max_length=255, blank=True, null=True)
+    pgv_site_max = models.CharField(max_length=255, blank=True, null=True)
+    pgv_site_mean = models.CharField(max_length=255, blank=True, null=True)
+    pgv_site_min = models.CharField(max_length=255, blank=True, null=True)
+    pgv_site_std = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_count = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_max = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_mean = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_min = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_std = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_count = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_max = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_mean = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_min = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_std = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_count = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_max = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_mean = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_min = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_std = models.CharField(max_length=255, blank=True, null=True)
+    pgd_total_wet_mean = models.CharField(max_length=255, blank=True, null=True)
+    pgv_site_min_mmi = models.IntegerField(blank=True, null=True)
+    pgv_site_max_mmi = models.IntegerField(blank=True, null=True)
+    pgv_site_mean_mmi = models.IntegerField(blank=True, null=True)
+    pgd_landslide_dry_min_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_max_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_dry_mean_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_min_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_max_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_landslide_wet_mean_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_min_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_max_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_liquefaction_wet_mean_di = models.CharField(max_length=255, blank=True, null=True)
+    pgd_total_wet_mean_di = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'disaster_neighborhood_grid'
