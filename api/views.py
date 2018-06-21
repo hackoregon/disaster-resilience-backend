@@ -1,8 +1,23 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from django.http import JsonResponse, HttpResponseServerError, HttpResponse
 
 from api.models import preexisting_models
-from api import serializers
+from api import serializers, freds_python_code
+
+
+def latlong_squared_view(request):
+
+    try:
+        # get url params
+        latitude = float(request.GET.get('lat'))
+        longitude = float(request.GET.get('long'))
+
+        data = freds_python_code.freds_function(latitude, longitude)
+
+        return JsonResponse(data)    
+    except:
+        return HttpResponseServerError('something wrent wrong')
 
 
 class NeighborhoodUnitsSet(viewsets.ReadOnlyModelViewSet):
@@ -237,3 +252,24 @@ class RlisSt180520Set(viewsets.ReadOnlyModelViewSet):
     queryset = preexisting_models.RlisSt180520.objects.all()
     serializer_class = serializers.RlisSt180520Serializer
 
+
+class POISet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows points of interest (Hospitals, schools, BEECN sites, etc)
+    """
+    queryset = preexisting_models.POI.objects.all()
+    serializer_class = serializers.POISerializer
+
+class DisasterNeighborhoodsSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+    queryset = preexisting_models.DisasterNeighborhoods.objects.all()
+    serializer_class = serializers.DisasterNeighborhoodsSerializer
+
+class DisasterNeighborhoodViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+    queryset = preexisting_models.DisasterNeighborhoodView.objects.all()
+    serializer_class = serializers.DisasterNeighborhoodViewSerializer

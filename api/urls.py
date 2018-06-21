@@ -28,10 +28,9 @@ router.register(r'NeighborhoodsRegions', views.NeighborhoodsRegionsSet)
 router.register(r'MajorRiverBridges', views.MajorRiverBridgesSet)
 router.register(r'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', views.BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSet)
 router.register(r'RlisSt180520', views.RlisSt180520Set)
-
-#
-#   not needed?
-#
+router.register(r'POI', views.POISet)
+router.register(r'DisasterNeighborhoods', views.DisasterNeighborhoodsSet)
+router.register(r'DisasterNeighborhoodView', views.DisasterNeighborhoodViewSet)
 #router.register(r'Hydrants', views.HydrantsSet)
 #router.register(r'PointsOfService', views.PointsOfServiceSet)
 #router.register(r'PressureZones', views.PressureZonesSet)
@@ -44,4 +43,5 @@ router.register(r'RlisSt180520', views.RlisSt180520Set)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('latlong_squared/', views.latlong_squared_view),
 ]

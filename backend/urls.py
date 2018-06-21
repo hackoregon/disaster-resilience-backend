@@ -29,6 +29,7 @@ urlpatterns = [
     path('disaster-resilience/', schema_view),
     path('disaster-resilience/api/', include('api.urls')),
     path('disaster-resilience/docs/', include_docs_urls(title=swagger_docs_title)),
+    path('disaster-resilience/sandbox/', include('civic_sandbox.urls')),
     
     # disable Django admin interface
     #path('admin/', admin.site.urls),

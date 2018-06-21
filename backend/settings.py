@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = bool(os.environ.get('DEBUG', False))
-DEBUG = False
+DEBUG = bool(os.environ.get('DEBUG', False))
 
 ALLOWED_HOSTS = ['*']
 
@@ -47,6 +46,7 @@ if DEBUG == True:
         'rest_framework',
         'rest_framework_swagger',
         'rest_framework_gis',
+        'civic_sandbox',
         ]
 
 else:
@@ -64,6 +64,7 @@ else:
         'rest_framework',
         'rest_framework_swagger',
         'rest_framework_gis',
+        'civic_sandbox',
         ]
 
 MIDDLEWARE = [

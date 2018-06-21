@@ -164,3 +164,18 @@ class RlisSt180520Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.RlisSt180520
         fields = '__all__'
+
+class POISerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.POI
+        fields = '__all__'
+
+class DisasterNeighborhoodsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.DisasterNeighborhoods
+        fields = '__all__'
+
+class DisasterNeighborhoodViewSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = preexisting_models.DisasterNeighborhoodView
+        fields = '__all__'
