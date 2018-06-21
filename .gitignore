@@ -108,3 +108,5 @@ ENV/
 *.code-workspace
 
 .idea/*
+
+.pytest_cache/
