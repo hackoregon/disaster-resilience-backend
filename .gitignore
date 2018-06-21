@@ -106,3 +106,5 @@ ENV/
 
 .vscode/
 *.code-workspace
+
+.idea/*
