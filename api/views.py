@@ -285,6 +285,6 @@ class DisasterNeighborhoodGridSet(viewsets.ReadOnlyModelViewSet):
         latitude = float(self.request.GET.get('lat'))
         longitude = float(self.request.GET.get('long'))
 
-        qs = preexisting_models.DisasterNeighborhoodGrid.objects.filter(x_simple=latitude)
-        qs = qs.filter(y_simple=longitude)
+        qs = preexisting_models.DisasterNeighborhoodGrid.objects.filter(x_simple=longitude)
+        qs = qs.filter(y_simple=latitude)
         return qs
