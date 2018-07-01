@@ -1024,7 +1024,7 @@ class DisasterNeighborhoods(models.Model):
 class DisasterNeighborhoodView(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField(blank=True, null=True)
     pgv_site_count = models.CharField(max_length=255, blank=True, null=True)
     pgv_site_max = models.CharField(max_length=255, blank=True, null=True)
     pgv_site_mean = models.CharField(max_length=255, blank=True, null=True)
