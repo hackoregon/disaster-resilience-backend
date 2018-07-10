@@ -175,13 +175,13 @@ class DisasterNeighborhoodsSerializer(serializers.HyperlinkedModelSerializer):
         model = preexisting_models.DisasterNeighborhoods
         fields = '__all__'
 
-class DisasterNeighborhoodViewSerializer(serializers.HyperlinkedModelSerializer):
+class DisasterNeighborhoodViewSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = preexisting_models.DisasterNeighborhoodView
         fields = '__all__'
         geo_field = 'wkb_geometry'
 
-class DisasterNeighborhoodGridSerializer(serializers.HyperlinkedModelSerializer):
+class DisasterNeighborhoodGridSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = preexisting_models.DisasterNeighborhoodGrid
         fields = '__all__'
