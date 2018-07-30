@@ -43,7 +43,7 @@ class SandboxAPIEndpointsTestCase(TestCase):
 class APIEndpointsTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.datasets = ['NeighborhoodUnits', 'BuildingFootprints', 'ElectricalTransmissionStructures', 'Jurisdictions', 'QuakeLossView', 'PhfM6P8BedrockGroundmotion', 'PopulationAndBuildingDensity', 'CensusBgAoi', 'CommunityCenters', 'Hospital', 'OregonLiquefactionSusceptibility', 'OregonNehrpSiteClass', 'OregonVsMeasurementIntervals', 'OregonVsMeasurementSites', 'UnreinforcedMasonryBuildings', 'Address', 'FireSta', 'Schools', 'NeighborhoodsRegions', 'MajorRiverBridges', 'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', 'RlisSt180520', 'POI', 'DisasterNeighborhoods', 'DisasterNeighborhoodView', 'DisasterNeighborhoodGrid']
+        self.datasets = ['NeighborhoodUnits', 'BuildingFootprints', 'ElectricalTransmissionStructures', 'Jurisdictions', 'PhfM6P8BedrockGroundmotion', 'PopulationAndBuildingDensity', 'CensusBgAoi', 'CommunityCenters', 'Hospital', 'OregonLiquefactionSusceptibility', 'OregonNehrpSiteClass', 'OregonVsMeasurementIntervals', 'OregonVsMeasurementSites', 'UnreinforcedMasonryBuildings', 'Address', 'FireSta', 'Schools', 'NeighborhoodsRegions', 'MajorRiverBridges', 'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', 'RlisSt180520', 'POI', 'DisasterNeighborhoods', 'DisasterNeighborhoodView']
     def test_list_responses(self):
         for endpoint in self.datasets:
             response = self.client.get('/disaster-resilience/api/'+endpoint+'/')
@@ -53,3 +53,16 @@ class APIEndpointsTestCase(TestCase):
             response = self.client.get('/disaster-resilience/api/'+endpoint+"/1/")
             assert response.status_code == status.HTTP_200_OK
         
+class QuakeLossViewEndpointTestCase(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    def test_list_responses(self):
+        for endpoint in self.datasets:
+            response = self.client.get('/disaster-resilience/api/QuakeLossView/')
+            assert response.status_code == status.HTTP_200_OK
+    def test_detail_responses(self):
+        for endpoint in self.datasets:
+            response = self.client.get('/disaster-resilience/api/QuakeLossView/591/")
+            assert response.status_code == status.HTTP_200_OK
+
+QuakeLossView
