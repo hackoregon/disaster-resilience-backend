@@ -43,14 +43,14 @@ class SandboxAPIEndpointsTestCase(TestCase):
 class APIEndpointsTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.datasets = ['NeighborhoodUnits', 'BuildingFootprints', 'ElectricalTransmissionStructures', 'Jurisdictions', 'PhfM6P8BedrockGroundmotion', 'PopulationAndBuildingDensity', 'CensusBgAoi', 'CommunityCenters', 'Hospital', 'OregonLiquefactionSusceptibility', 'OregonNehrpSiteClass', 'OregonVsMeasurementIntervals', 'OregonVsMeasurementSites', 'UnreinforcedMasonryBuildings', 'Address', 'FireSta', 'Schools', 'NeighborhoodsRegions', 'MajorRiverBridges', 'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', 'RlisSt180520', 'POI', 'DisasterNeighborhoods', 'DisasterNeighborhoodView']
+        self.datasets = ['NeighborhoodUnits', 'BuildingFootprints', 'ElectricalTransmissionStructures', 'Jurisdictions', 'PhfM6P8BedrockGroundmotion', 'PopulationAndBuildingDensity', 'CensusBgAoi', 'CommunityCenters', 'Hospital', 'OregonLiquefactionSusceptibility', 'OregonNehrpSiteClass', 'OregonVsMeasurementIntervals', 'OregonVsMeasurementSites', 'UnreinforcedMasonryBuildings', 'Address', 'FireSta', 'Schools', 'NeighborhoodsRegions', 'MajorRiverBridges', 'BasicEarthquakeEmergencyCommunicationNodeBeecnLocations', 'RlisSt180520', 'DisasterNeighborhoods', 'DisasterNeighborhoodView']
     def test_list_responses(self):
         for endpoint in self.datasets:
             response = self.client.get('/disaster-resilience/api/'+endpoint+'/')
             assert response.status_code == status.HTTP_200_OK
     def test_detail_responses(self):
         for endpoint in self.datasets:
-            response = self.client.get('/disaster-resilience/api/'+endpoint+"/1/")
+            response = self.client.get('/disaster-resilience/api/'+endpoint+'/1/')
             assert response.status_code == status.HTTP_200_OK
         
 class QuakeLossViewEndpointTestCase(TestCase):
@@ -71,4 +71,14 @@ class DisasterNeighborhoodGridEndpointTestCase(TestCase):
         assert response.status_code == status.HTTP_200_OK
     def test_rounding_response(self):
         response = self.client.get('/disaster-resilience/api/DisasterNeighborhoodGrid/?lat=45.592&long=-122.835')
+        assert response.status_code == status.HTTP_200_OK
+
+class POIEndpointTestCase(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    def test_list_response(self):
+        response = self.client.get('/disaster-resilience/api/POI/')
+        assert response.status_code == status.HTTP_200_OK
+    def test_detail_response(self):
+        response = self.client.get('/disaster-resilience/api/POI/BEECN1/')
         assert response.status_code == status.HTTP_200_OK
