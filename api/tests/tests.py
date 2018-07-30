@@ -56,13 +56,19 @@ class APIEndpointsTestCase(TestCase):
 class QuakeLossViewEndpointTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
-    def test_list_responses(self):
-        for endpoint in self.datasets:
-            response = self.client.get('/disaster-resilience/api/QuakeLossView/')
-            assert response.status_code == status.HTTP_200_OK
-    def test_detail_responses(self):
-        for endpoint in self.datasets:
-            response = self.client.get('/disaster-resilience/api/QuakeLossView/591/")
-            assert response.status_code == status.HTTP_200_OK
+    def test_list_response(self):
+        response = self.client.get('/disaster-resilience/api/QuakeLossView/')
+        assert response.status_code == status.HTTP_200_OK
+    def test_detail_response(self):
+        response = self.client.get('/disaster-resilience/api/QuakeLossView/591/')
+        assert response.status_code == status.HTTP_200_OK
 
-QuakeLossView
+class DisasterNeighborhoodGridEndpointTestCase(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    def test_CENTRL_office_response(self):
+        response = self.client.get('/disaster-resilience/api/DisasterNeighborhoodGrid/?lat=45.523628&long=-122.656646')
+        assert response.status_code == status.HTTP_200_OK
+    def test_rounding_response(self):
+        response = self.client.get('/disaster-resilience/api/DisasterNeighborhoodGrid/?lat=45.592&long=-122.835')
+        assert response.status_code == status.HTTP_200_OK
