@@ -60,7 +60,7 @@ class QuakeLossViewEndpointTestCase(TestCase):
         response = self.client.get('/disaster-resilience/api/QuakeLossView/')
         assert response.status_code == status.HTTP_200_OK
     def test_detail_response(self):
-        response = self.client.get('/disaster-resilience/api/QuakeLossView/591/')
+        response = self.client.get('/disaster-resilience/api/QuakeLossView/2525/')
         assert response.status_code == status.HTTP_200_OK
 
 class DisasterNeighborhoodGridEndpointTestCase(TestCase):
