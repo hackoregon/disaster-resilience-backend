@@ -3,21 +3,7 @@ from rest_framework import viewsets
 from django.http import JsonResponse, HttpResponseServerError, HttpResponse
 
 from api.models import preexisting_models
-from api import serializers, freds_python_code
-
-
-def latlong_squared_view(request):
-
-    try:
-        # get url params
-        latitude = float(request.GET.get('lat'))
-        longitude = float(request.GET.get('long'))
-
-        data = freds_python_code.freds_function(latitude, longitude)
-
-        return JsonResponse(data)    
-    except:
-        return HttpResponseServerError('something wrent wrong')
+from api import serializers
 
 
 class NeighborhoodUnitsSet(viewsets.ReadOnlyModelViewSet):

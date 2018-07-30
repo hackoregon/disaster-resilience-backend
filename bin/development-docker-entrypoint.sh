@@ -20,8 +20,8 @@ echo Debug: $DEBUG
 echo "Collect static files"
 python -Wall manage.py collectstatic --noinput
 
-echo "Make migrations"
-python -Wall manage.py makemigrations
+#echo "Make migrations"
+#python -Wall manage.py makemigrations
 
 echo "Migrate"
 python -Wall manage.py migrate

@@ -7,7 +7,7 @@
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
 
-python -Wall manage.py makemigrations
+#python -Wall manage.py makemigrations
 
 # Collect static files
 echo "Collect static files"

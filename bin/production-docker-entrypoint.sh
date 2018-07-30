@@ -10,7 +10,7 @@ set -e
     source /code/bin/get-ssm-parameters.sh
 #fi
 
-python -Wall manage.py makemigrations
+#python -Wall manage.py makemigrations
 
 python -Wall manage.py collectstatic --noinput
 
