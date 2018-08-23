@@ -11,6 +11,7 @@ RUN apt-get update \
     libproj-dev \
     apt-utils \
     jq \
+    awscli=1.11.13-1 \  
   && apt-get clean
 
 # create and populate /code

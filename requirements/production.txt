@@ -10,4 +10,5 @@ psycogreen==1.0
 django-db-geventpool
 
 # install for use by get-ssm-parameters.sh script
-awscli
+# using apt-get install instead
+#awscli
