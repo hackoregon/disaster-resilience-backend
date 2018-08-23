@@ -11,4 +11,4 @@ django-db-geventpool
 
 # install for use by get-ssm-parameters.sh script
 # using apt-get install instead
-#awscli
+awscli==1.15.84
