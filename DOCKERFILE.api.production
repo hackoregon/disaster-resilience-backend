@@ -17,6 +17,9 @@ RUN apt-get update \
 RUN mkdir /code
 WORKDIR /code
 
+# upgrade pip itself before using it
+RUN pip install --upgrade pip
+
 COPY /requirements/* /code/
 RUN pip install -r production.txt
 RUN pip install -r geodjango.txt
