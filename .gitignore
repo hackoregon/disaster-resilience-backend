@@ -109,3 +109,4 @@ ENV/
 
 .idea/*
 env.sh
+bin/createsuperuser-dev.sh

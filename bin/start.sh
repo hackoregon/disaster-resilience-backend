@@ -3,13 +3,16 @@ usage() { echo "Usage: $0 [-d] for a development build, [-p] for a production bu
 
 if [ $# == 0 ]; then usage; fi
 
-while getopts ":dp" opt; do
+while getopts ":dpb" opt; do
     case "$opt" in
         d)
           docker-compose -f development-docker-compose.yml up
           ;;
         p)
           docker-compose -f production-docker-compose.yml up
+          ;;
+        b)
+          docker-compose -f development-docker-compose.yml run --entrypoint bash -p 8000:8000 db_development
           ;;
         *)
           usage
