@@ -23,3 +23,47 @@ class DisasterNeighborhoodView(models.Model):
     class Meta:
         managed = False
         db_table = 'disaster_neighborhood_view'
+
+
+CHLOROPLETHMAP = 'CM'
+SCATTERPLOTMAP = 'SM'
+PATHMAP = 'PM'
+POLYGONPLOTMAP = 'PP'
+ICONMAP = 'IM'
+SCREENGRIDMAP = 'SG'
+
+VISUALIZATION_CHOICES = (
+    (CHLOROPLETHMAP, 'ChoroplethMap'),
+    (SCATTERPLOTMAP, 'ScatterPlotMap'),
+    (PATHMAP, 'PathMap'),
+    (POLYGONPLOTMAP, 'PolygonPlotMap'),
+    (ICONMAP, 'IconMap'),
+    (SCREENGRIDMAP, 'ScreenGridMap'),
+)
+
+class Slide(models.Model):
+    name = models.CharField(max_length=80)
+    endpoint = models.URLField()
+    visualization = models.CharField(max_length=2, choices=VISUALIZATION_CHOICES, default=SCATTERPLOTMAP)
+
+    def __str__(self):
+        return self.name
+
+class Foundation(models.Model):
+    name = models.CharField(max_length=80)
+    endpoint = models.URLField()
+    visualization = models.CharField(max_length=2, choices=VISUALIZATION_CHOICES, default=SCATTERPLOTMAP)
+
+    def __str__(self):
+        return self.name
+
+class Packages(models.Model):
+    name = models.CharField(max_length=80)
+    description = models.CharField(max_length=200)
+    foundations = models.ManyToManyField(Foundation, related_name='foundations', related_query_name='foundation')
+    default_foundation = models.ForeignKey(Foundation, on_delete=models.SET_NULL, null=True, related_name='default_foundation')
+    slides = models.ManyToManyField(Slide, related_name='slides', related_query_name='slide')
+    default_slide = models.ForeignKey(Slide, on_delete=models.SET_NULL, null=True, related_name='default_slide')
+
+    def __str__(self):
+        return self.name

@@ -1,9 +1,13 @@
 from rest_framework.decorators import api_view
 from django.contrib.gis.geos import GEOSGeometry, MultiPoint, MultiPolygon, MultiLineString
 from .models import POI, DisasterNeighborhoodView
-from .serializers import POISerializer, ShakingSerializer, LandslideSerializer,LiquefactionSerializer, CensusResponseSerializer
+from .serializers import POISerializer, ShakingSerializer, LandslideSerializer, LiquefactionSerializer, CensusResponseSerializer
 from .helpers import sandbox_view_factory
 from .meta import poi_meta, shaking_meta, landslide_meta, liquefaction_meta, census_response_meta
+from rest_framework import viewsets
+from civic_sandbox import models
+from civic_sandbox import serializers
+
 
 poi = sandbox_view_factory(
   model_class=POI,
@@ -51,4 +55,23 @@ censusresponse = sandbox_view_factory(
   dates=census_response_meta['dates'],
   )
 
+class SlideSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows SlideSet to be viewed or listed.
+    """
+    queryset = models.Slide.objects.all()
+    serializer_class = serializers.SlideSerializer
 
+class FoundationSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows FoundationSet to be viewed or listed.
+    """
+    queryset = models.Foundation.objects.all()
+    serializer_class = serializers.FoundationSerializer
+
+class PackagesSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that allows PackageSet to be viewed or listed.
+    """
+    queryset = models.Packages.objects.all()
+    serializer_class = serializers.PackageSerializer
