@@ -14,4 +14,4 @@ echo "Collect static files"
 python -Wall manage.py collectstatic --noinput
 
 # have pytest run unit tests
-pytest -n 4
+pytest
