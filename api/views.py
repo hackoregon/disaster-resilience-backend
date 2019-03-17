@@ -267,6 +267,10 @@ class DisasterNeighborhoodGridSet(viewsets.ReadOnlyModelViewSet):
     queryset = preexisting_models.DisasterNeighborhoodGrid.objects.all()
     serializer_class = serializers.DisasterNeighborhoodGridSerializer
 
+    # disable automatic schema generation:
+    # (https://www.django-rest-framework.org/community/3.7-announcement/#customizing-api-docs-schema-generation)
+    schema = None
+
     def get_queryset(self):
         latitude = float(self.request.GET.get('lat'))
         longitude = float(self.request.GET.get('long'))
