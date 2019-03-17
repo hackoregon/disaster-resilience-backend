@@ -31,6 +31,7 @@ PATHMAP = 'PM'
 POLYGONPLOTMAP = 'PP'
 ICONMAP = 'IM'
 SCREENGRIDMAP = 'SG'
+TEXT = "TX"
 
 VISUALIZATION_CHOICES = (
     (CHLOROPLETHMAP, 'ChoroplethMap'),
@@ -39,6 +40,7 @@ VISUALIZATION_CHOICES = (
     (POLYGONPLOTMAP, 'PolygonPlotMap'),
     (ICONMAP, 'IconMap'),
     (SCREENGRIDMAP, 'ScreenGridMap'),
+    (TEXT, 'Text'),
 )
 
 class Slide(models.Model):
@@ -53,6 +55,7 @@ class Foundation(models.Model):
     name = models.CharField(max_length=80)
     endpoint = models.URLField()
     visualization = models.CharField(max_length=2, choices=VISUALIZATION_CHOICES, default=SCATTERPLOTMAP)
+    metadata_context = models.URLField()
 
     def __str__(self):
         return self.name
@@ -63,7 +66,7 @@ class Packages(models.Model):
     foundations = models.ManyToManyField(Foundation, related_name='foundations', related_query_name='foundation')
     default_foundation = models.ForeignKey(Foundation, on_delete=models.SET_NULL, null=True, related_name='default_foundation')
     slides = models.ManyToManyField(Slide, related_name='slides', related_query_name='slide')
-    default_slide = models.ForeignKey(Slide, on_delete=models.SET_NULL, null=True, related_name='default_slide')
-
+    default_slide = models.ManyToManyField(Slide, related_name='default_slides', related_query_name='default_slide')
+    
     def __str__(self):
         return self.name
