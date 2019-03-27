@@ -269,7 +269,7 @@ class DisasterNeighborhoodGridSet(viewsets.ReadOnlyModelViewSet):
 
     # disable automatic schema generation:
     # (https://www.django-rest-framework.org/community/3.7-announcement/#customizing-api-docs-schema-generation)
-    schema = None
+    #schema = None
 
     def get_queryset(self):
         latitude = float(self.request.GET.get('lat'))
