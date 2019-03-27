@@ -23,8 +23,7 @@ class DisasterNeighborhoodView(models.Model):
     class Meta:
         managed = False
         db_table = 'disaster_neighborhood_view'
-
-
+ 
 class Visualization:
     MAX_LENGTH = 30
 
