@@ -25,28 +25,31 @@ class DisasterNeighborhoodView(models.Model):
         db_table = 'disaster_neighborhood_view'
 
 
-CHLOROPLETHMAP = 'CM'
-SCATTERPLOTMAP = 'SM'
-PATHMAP = 'PM'
-POLYGONPLOTMAP = 'PP'
-ICONMAP = 'IM'
-SCREENGRIDMAP = 'SG'
-TEXT = "TX"
+class Visualization:
+    MAX_LENGTH = 30
 
-VISUALIZATION_CHOICES = (
-    (CHLOROPLETHMAP, 'ChoroplethMap'),
-    (SCATTERPLOTMAP, 'ScatterPlotMap'),
-    (PATHMAP, 'PathMap'),
-    (POLYGONPLOTMAP, 'PolygonPlotMap'),
-    (ICONMAP, 'IconMap'),
-    (SCREENGRIDMAP, 'ScreenGridMap'),
-    (TEXT, 'Text'),
-)
+    CHLOROPLETHMAP = 'ChloroplethMap'
+    SCATTERPLOTMAP = 'ScatterPlotMap'
+    PATHMAP = 'PathMap'
+    POLYGONPLOTMAP = 'PolygonPlotMap'
+    ICONMAP = 'IconMap'
+    SCREENGRIDMAP = 'ScreenGridMap'
+    TEXT = "Text"
+
+    CHOICES = (
+        (CHLOROPLETHMAP, 'ChloroplethMap'),
+        (SCATTERPLOTMAP, 'ScatterPlotMap'),
+        (PATHMAP, 'PathMap'),
+        (POLYGONPLOTMAP, 'PolygonPlotMap'),
+        (ICONMAP, 'IconMap'),
+        (SCREENGRIDMAP, 'ScreenGridMap'),
+        (TEXT, 'Text'),
+    )
 
 class Slide(models.Model):
     name = models.CharField(max_length=80)
     endpoint = models.URLField()
-    visualization = models.CharField(max_length=2, choices=VISUALIZATION_CHOICES, default=SCATTERPLOTMAP)
+    visualization = models.CharField(max_length=Visualization.MAX_LENGTH, choices=Visualization.CHOICES, default=Visualization.CHLOROPLETHMAP)
 
     def __str__(self):
         return self.name
@@ -54,7 +57,7 @@ class Slide(models.Model):
 class Foundation(models.Model):
     name = models.CharField(max_length=80)
     endpoint = models.URLField()
-    visualization = models.CharField(max_length=2, choices=VISUALIZATION_CHOICES, default=SCATTERPLOTMAP)
+    visualization = models.CharField(max_length=Visualization.MAX_LENGTH, choices=Visualization.CHOICES, default=Visualization.SCATTERPLOTMAP)
     metadata_context = models.URLField()
 
     def __str__(self):
