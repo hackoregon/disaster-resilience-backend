@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
+from backend import settings
 
 import api
 
@@ -30,7 +31,7 @@ urlpatterns = [
     path('disaster-resilience/api/', include('api.urls')),
     path('disaster-resilience/docs/', include_docs_urls(title=swagger_docs_title)),
     path('disaster-resilience/sandbox/', include('civic_sandbox.urls')),
-    
-    # disable Django admin interface
-    #path('admin/', admin.site.urls),
 ]
+
+if settings.ENABLE_ADMIN_INTERFACE:    
+       urlpatterns.append(path('admin/', admin.site.urls))

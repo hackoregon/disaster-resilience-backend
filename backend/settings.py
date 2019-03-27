@@ -193,3 +193,5 @@ LOGGING = {
 
 #add CORS support for all domains
 CORS_ORIGIN_ALLOW_ALL = True
+
+ENABLE_ADMIN_INTERFACE = False
