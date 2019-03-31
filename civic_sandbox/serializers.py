@@ -48,3 +48,4 @@ class PackageSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Packages
         fields = '__all__'
+        depth = 1
