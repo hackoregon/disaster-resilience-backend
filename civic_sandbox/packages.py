@@ -43,5 +43,5 @@ foundations = {
 package_info = {
     'packages' : packages,
     'slides' : slides,
-    'foundation' : foundations
+    'foundations' : foundations
     }
