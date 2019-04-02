@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^foundations/landslide/', views.landslide),
     url(r'^foundations/censusresponse/', views.censusresponse),
     url(r'^packages/', include(router.urls)),
+    url(r'^package_info/', views.packages_view, name='package_info')
     ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

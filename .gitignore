@@ -110,3 +110,4 @@ ENV/
 .idea/*
 env.sh
 bin/createsuperuser-dev.sh
+bin/db_dump.sh

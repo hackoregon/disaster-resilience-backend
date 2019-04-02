@@ -7,6 +7,8 @@ from .meta import poi_meta, shaking_meta, landslide_meta, liquefaction_meta, cen
 from rest_framework import viewsets
 from civic_sandbox import models
 from civic_sandbox import serializers
+from django.http import JsonResponse
+from civic_sandbox import packages
 
 
 poi = sandbox_view_factory(
@@ -75,3 +77,6 @@ class PackagesSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = models.Packages.objects.all()
     serializer_class = serializers.PackageSerializer
+
+def packages_view(request):
+    return JsonResponse(packages.package_info)
