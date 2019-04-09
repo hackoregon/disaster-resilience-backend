@@ -1,8 +1,6 @@
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
-
 from rest_framework.serializers import HyperlinkedModelSerializer
-
-from .models import POI, DisasterNeighborhoodView, Slide, Foundation, Packages
+from .models import POI, DisasterNeighborhoodView
 
 class POISerializer(GeoFeatureModelSerializer):
     class Meta:
@@ -33,19 +31,3 @@ class CensusResponseSerializer(GeoFeatureModelSerializer):
         model = DisasterNeighborhoodView
         fields = ('id', 'name', 'census_response_rate')
         geo_field = 'wkb_geometry'
-
-class SlideSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = Slide
-        fields = '__all__'
-
-class FoundationSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = Foundation
-        fields = '__all__'
-
-class PackageSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = Packages
-        fields = '__all__'
-        depth = 1

@@ -7,8 +7,6 @@ from .meta import poi_meta, shaking_meta, landslide_meta, liquefaction_meta, cen
 from rest_framework import viewsets
 from civic_sandbox import models
 from civic_sandbox import serializers
-from django.http import JsonResponse
-from civic_sandbox import packages
 
 
 poi = sandbox_view_factory(
@@ -56,27 +54,3 @@ censusresponse = sandbox_view_factory(
   attributes =census_response_meta['attributes'],
   dates=census_response_meta['dates'],
   )
-
-class SlideSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows SlideSet to be viewed or listed.
-    """
-    queryset = models.Slide.objects.all()
-    serializer_class = serializers.SlideSerializer
-
-class FoundationSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows FoundationSet to be viewed or listed.
-    """
-    queryset = models.Foundation.objects.all()
-    serializer_class = serializers.FoundationSerializer
-
-class PackagesSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that allows PackageSet to be viewed or listed.
-    """
-    queryset = models.Packages.objects.all()
-    serializer_class = serializers.PackageSerializer
-
-def packages_view(request):
-    return JsonResponse(packages.package_info)
