@@ -6,7 +6,7 @@ if [ $# == 0 ]; then usage; fi
 while getopts ":dpbr" opt; do
     case "$opt" in
         d)
-          docker-compose -f development-docker-compose.yml up
+          docker-compose -f development-docker-compose.yml up --abort-on-container-exit
           ;;
         p)
           docker-compose -f production-docker-compose.yml up
