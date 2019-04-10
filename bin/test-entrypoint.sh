@@ -7,7 +7,7 @@
 # -e  Exit immediately if a command exits with a non-zero status.
 set -e
 
-#python manage.py makemigrations
+echo Debug: $DEBUG
 
 # Collect static files
 echo "Collect static files"
