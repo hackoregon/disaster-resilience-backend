@@ -11,7 +11,6 @@ urlpatterns = [
     url(r'^foundations/liquefaction/', views.liquefaction),
     url(r'^foundations/landslide/', views.landslide),
     url(r'^foundations/censusresponse/', views.censusresponse),
-    url(r'^packages/', packages_view.packages_view, name='packages'),
     url(r'^package_info/', packages_view.packages_view, name='package_info'),
     ]
 
