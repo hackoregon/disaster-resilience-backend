@@ -6,7 +6,7 @@ poi_meta = {
       'name': 'Type',
     },
     'secondary': {
-      'field': 'description_txt',
+      'field': 'description2_txt',
       'name': 'Name',
     },
   },
