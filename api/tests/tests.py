@@ -27,19 +27,6 @@ class DocsEndpointTestCase(TestCase):
         response = self.client.get('/disaster-resilience/docs/')
         assert response.status_code == status.HTTP_200_OK
 
-class SandboxAPIEndpointsTestCase(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-        self.datasets = ['foundations/censusresponse','foundations/landslide/','foundations/liquefaction','foundations/shaking','slides/poi/']
-    def test_list_responses(self):
-        for endpoint in self.datasets:
-            response = self.client.get('/disaster-resilience/sandbox/'+endpoint+'/')
-            assert response.status_code == status.HTTP_200_OK
-    def test_detail_responses(self):
-        for endpoint in self.datasets:
-            response = self.client.get('/disaster-resilience/sandbox/'+endpoint+"/1/")
-            assert response.status_code == status.HTTP_200_OK
-
 class APIEndpointsTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
