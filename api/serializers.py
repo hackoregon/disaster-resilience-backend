@@ -20,11 +20,13 @@ class CensusBgAoiSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.CensusBgAoi
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class CommunityCentersSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.CommunityCenters
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class CountiesAoiSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -35,6 +37,7 @@ class HospitalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Hospital
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class OregonLiquefactionSusceptibilitySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -50,11 +53,13 @@ class OregonVsMeasurementIntervalsSerializer(serializers.HyperlinkedModelSeriali
     class Meta:
         model = preexisting_models.OregonVsMeasurementIntervals
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class OregonVsMeasurementSitesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.OregonVsMeasurementSites
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class SubstationPortlandSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -65,11 +70,13 @@ class UnreinforcedMasonryBuildingsSerializer(serializers.HyperlinkedModelSeriali
     class Meta:
         model = preexisting_models.UnreinforcedMasonryBuildings
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class ElectricalTransmissionStructuresSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.ElectricalTransmissionStructures
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class HydrantsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -80,6 +87,7 @@ class JurisdictionsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Jurisdictions
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class QuakeLossViewSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -90,6 +98,7 @@ class PhfM6P8BedrockGroundmotionSerializer(serializers.HyperlinkedModelSerialize
     class Meta:
         model = preexisting_models.PhfM6P8BedrockGroundmotion
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class PointsOfServiceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -100,6 +109,7 @@ class PopulationAndBuildingDensitySerializer(serializers.HyperlinkedModelSeriali
     class Meta:
         model = preexisting_models.PopulationAndBuildingDensity
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class PressureZonesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -135,13 +145,13 @@ class FireStaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.FireSta
         fields = '__all__'
-
+        geo_field = 'wkb_geometry'
 		
 class SchoolsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Schools
         fields = '__all__'
-
+        geo_field = 'wkb_geometry'
 
 class NeighborhoodsRegionsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -153,17 +163,19 @@ class MajorRiverBridgesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.MajorRiverBridges
         fields = '__all__'
-
+        geo_field = 'wkb_geometry'
 
 class BasicEarthquakeEmergencyCommunicationNodeBeecnLocationsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.BasicEarthquakeEmergencyCommunicationNodeBeecnLocations
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class RlisSt180520Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.RlisSt180520
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class POISerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
