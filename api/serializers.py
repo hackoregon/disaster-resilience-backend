@@ -32,6 +32,7 @@ class CountiesAoiSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.CountiesAoi
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class HospitalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -43,11 +44,13 @@ class OregonLiquefactionSusceptibilitySerializer(serializers.HyperlinkedModelSer
     class Meta:
         model = preexisting_models.OregonLiquefactionSusceptibility
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class OregonNehrpSiteClassSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.OregonNehrpSiteClass
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class OregonVsMeasurementIntervalsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -65,6 +68,7 @@ class SubstationPortlandSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.SubstationPortland
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class UnreinforcedMasonryBuildingsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -82,6 +86,7 @@ class HydrantsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Hydrants
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class JurisdictionsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -115,31 +120,37 @@ class PressureZonesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.PressureZones
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class PressurizedMainsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.PressurizedMains
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class RegionalDrinkingWaterAdvisoryBoundarySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.RegionalDrinkingWaterAdvisoryBoundary
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class RegionalWaterDistrictsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.RegionalWaterDistricts
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class ServicesSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Services
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class AddressSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.Address
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class FireStaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -181,6 +192,7 @@ class POISerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = preexisting_models.POI
         fields = '__all__'
+        geo_field = 'wkb_geometry'
 
 class DisasterNeighborhoodsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
