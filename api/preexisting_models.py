@@ -349,7 +349,7 @@ class Hydrants(models.Model):
     mainsize = models.FloatField(blank=True, null=True)
     parentassetname = models.CharField(max_length=250, blank=True, null=True)
     pwbreferencename = models.CharField(max_length=500, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -440,7 +440,7 @@ class OregonLiquefactionSusceptibility(models.Model):
     liq_susc = models.SmallIntegerField(blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -536,7 +536,7 @@ class PointsOfService(models.Model):
     parentassetid = models.CharField(max_length=15, blank=True, null=True)
     parentassetname = models.CharField(max_length=250, blank=True, null=True)
     pwbreferencename = models.CharField(max_length=500, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -628,7 +628,7 @@ class PressurizedMains(models.Model):
     roadcrossing = models.CharField(max_length=50, blank=True, null=True)
     railcrossing = models.CharField(max_length=250, blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -647,7 +647,7 @@ class RegionalDrinkingWaterAdvisoryBoundary(models.Model):
     district = models.CharField(max_length=50, blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -668,7 +668,7 @@ class RegionalWaterDistricts(models.Model):
     area = models.FloatField(blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -745,7 +745,7 @@ class Services(models.Model):
     parentassetname = models.CharField(max_length=250, blank=True, null=True)
     pwbreferencename = models.CharField(max_length=500, blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -755,7 +755,7 @@ class Services(models.Model):
 class SubstationPortland(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
     averagexfm = models.DecimalField(max_digits=9, decimal_places=0, blank=True, null=True)
-    wkb_geometry = GeometryField() # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -845,7 +845,7 @@ class Address(models.Model):
     source = models.CharField(max_length=80, blank=True, null=True)
     x = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
     y = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -909,7 +909,7 @@ class NeighborhoodsRegions(models.Model):
     id = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
     shape_leng = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
     shape_area = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -970,7 +970,7 @@ class POI(models.Model):
     city = models.CharField(max_length=255, blank=True, null=True)
     state = models.CharField(max_length=2, blank=True, null=True)
     zipcode = models.CharField(max_length=5, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -980,7 +980,7 @@ class POI(models.Model):
 class DisasterNeighborhoods(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wwkb_geometry = GeometryField()
     pgv_site_count = models.CharField(max_length=255, blank=True, null=True)
     pgv_site_max = models.CharField(max_length=255, blank=True, null=True)
     pgv_site_mean = models.CharField(max_length=255, blank=True, null=True)
