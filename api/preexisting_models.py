@@ -143,7 +143,7 @@ class CensusBgAoi(models.Model):
     intptlat = models.CharField(max_length=11, blank=True, null=True)
     intptlon = models.CharField(max_length=12, blank=True, null=True)
     bg_areasqk = models.DecimalField(max_digits=19, decimal_places=6, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -166,7 +166,7 @@ class CommunityCenters(models.Model):
     web_url = models.CharField(max_length=100, blank=True, null=True)
     owner = models.CharField(max_length=80, blank=True, null=True)
     manager = models.CharField(max_length=80, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -177,7 +177,7 @@ class CountiesAoi(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     key = models.CharField(max_length=32, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -240,7 +240,7 @@ class ElectricalTransmissionStructures(models.Model):
     phf_wet_prob = models.SmallIntegerField(blank=True, null=True)
     phf_dry_pgd = models.SmallIntegerField(blank=True, null=True)
     phf_dry_prob = models.SmallIntegerField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -253,7 +253,7 @@ class Hospital(models.Model):
     address = models.CharField(max_length=38, blank=True, null=True)
     city = models.CharField(max_length=20, blank=True, null=True)
     zipcode = models.CharField(max_length=5, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -371,7 +371,7 @@ class Jurisdictions(models.Model):
     permresidents = models.IntegerField(blank=True, null=True)
     dayoccupants = models.IntegerField(blank=True, null=True)
     nightoccupants = models.IntegerField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -455,7 +455,7 @@ class OregonNehrpSiteClass(models.Model):
     usgs_pnw_vs30 = models.SmallIntegerField(blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -475,7 +475,7 @@ class OregonVsMeasurementIntervals(models.Model):
     orlamx = models.FloatField(blank=True, null=True)
     orlamy = models.FloatField(blank=True, null=True)
     interval = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -492,7 +492,7 @@ class OregonVsMeasurementSites(models.Model):
     depth_m = models.FloatField(blank=True, null=True)
     surfunit = models.CharField(max_length=35, blank=True, null=True)
     vs_type = models.CharField(max_length=10, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -507,7 +507,7 @@ class PhfM6P8BedrockGroundmotion(models.Model):
     pgv = models.FloatField(blank=True, null=True)
     sa03 = models.FloatField(blank=True, null=True)
     sa10 = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -550,7 +550,7 @@ class PopulationAndBuildingDensity(models.Model):
     shape_length = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
     bldgcount_res = models.SmallIntegerField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -569,7 +569,7 @@ class PressureZones(models.Model):
     deliverymethod = models.CharField(max_length=200, blank=True, null=True)
     shape_length = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -755,7 +755,7 @@ class Services(models.Model):
 class SubstationPortland(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
     averagexfm = models.DecimalField(max_digits=9, decimal_places=0, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField() # This field type is a guess.
 
     class Meta:
         managed = False
@@ -812,7 +812,7 @@ class UnreinforcedMasonryBuildings(models.Model):
     historic_s = models.CharField(max_length=80, blank=True, null=True)
     shapestare = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
     shapestlen = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -857,7 +857,7 @@ class FireSta(models.Model):
     address = models.CharField(max_length=38, blank=True, null=True)
     city = models.CharField(max_length=28, blank=True, null=True)
     district = models.CharField(max_length=40, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -874,7 +874,7 @@ class BasicEarthquakeEmergencyCommunicationNodeBeecnLocations(models.Model):
     y_coord = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
     map_id = models.CharField(max_length=80, blank=True, null=True)
     barrier_id = models.CharField(max_length=80, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -890,7 +890,7 @@ class MajorRiverBridges(models.Model):
     shape_leng = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
     shape_area = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
     shape_le_1 = models.DecimalField(max_digits=24, decimal_places=15, blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -941,7 +941,7 @@ class Schools(models.Model):
     type = models.CharField(max_length=7, blank=True, null=True)
     county = models.CharField(max_length=30, blank=True, null=True)
     updatedate = models.DateField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
@@ -953,7 +953,7 @@ class RlisSt180520(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     area = models.FloatField(blank=True, null=True)
     sqmile = models.FloatField(blank=True, null=True)
-    wkb_geometry = models.TextField(blank=True, null=True)  # This field type is a guess.
+    wkb_geometry = GeometryField()
 
     class Meta:
         managed = False
