@@ -282,3 +282,10 @@ class DisasterNeighborhoodGridSet(viewsets.ReadOnlyModelViewSet):
         qs = preexisting_models.DisasterNeighborhoodGrid.objects.filter(x_simple=rounded_long)
         qs = qs.filter(y_simple=rounded_lat)
         return qs
+
+class AebmResultsViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+    queryset = preexisting_models.AebmResults.objects.all()
+    serializer_class = serializers.AebmResultsSerializer

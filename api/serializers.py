@@ -210,3 +210,9 @@ class DisasterNeighborhoodGridSerializer(GeoFeatureModelSerializer):
         model = preexisting_models.DisasterNeighborhoodGrid
         fields = '__all__'
         geo_field = 'wkb_geometry'
+
+class AebmResultsSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = preexisting_models.AebmResults
+        fields = '__all__'
+        geo_field = 'wkb_geometry'

@@ -12,10 +12,7 @@ while getopts ":dpbr" opt; do
           docker-compose -f production-docker-compose.yml up
           ;;
         b)
-          docker-compose -f development-docker-compose.yml run --entrypoint bash -p 8000:8000 db_development
-          ;;
-         p)
-          docker-compose -f production-docker-compose.yml up --remove-orphans
+          docker-compose -f production-docker-compose.yml run --entrypoint bash disaster-resilience-service       
           ;;
         *)
           usage
