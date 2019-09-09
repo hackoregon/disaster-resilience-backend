@@ -88,7 +88,7 @@ except ImportError:
     pass
 
 # worker_connections = 1000
-# timeout = 30
+timeout = 60
 # keepalive = 2
 
 #
