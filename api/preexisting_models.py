@@ -409,7 +409,7 @@ class QuakeLossView(models.Model):
     class Meta:
 #        managed = False
         db_table = 'quake_loss_view'
-		
+
 
 class NeighborhoodUnits(models.Model):
     objectid = models.AutoField(primary_key=True)
@@ -1156,27 +1156,13 @@ class DisasterNeighborhoodGrid(models.Model):
 
 class AebmResults(models.Model):
     ogc_fid = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=-1, blank=True, null=True)
-    tract = models.BigIntegerField(blank=True, null=True)
-    occupancy = models.CharField(max_length=-1, blank=True, null=True)
-    eqbldgtype = models.CharField(max_length=-1, blank=True, null=True)
-    designleve = models.CharField(max_length=-1, blank=True, null=True)
-    bldgvalue = models.IntegerField(blank=True, null=True)
-    lossstruct = models.FloatField(blank=True, null=True)
-    lossnonstr = models.FloatField(blank=True, null=True)
-    lossnons_1 = models.FloatField(blank=True, null=True)
-    lossconten = models.FloatField(blank=True, null=True)
-    contentval = models.FloatField(blank=True, null=True)
-    casdaylvl1 = models.FloatField(blank=True, null=True)
-    casdaylvl2 = models.FloatField(blank=True, null=True)
-    casdaylvl3 = models.FloatField(blank=True, null=True)
-    casdaylvl4 = models.FloatField(blank=True, null=True)
-    casnight_1 = models.FloatField(blank=True, null=True)
-    casnight_2 = models.FloatField(blank=True, null=True)
-    casnight_3 = models.FloatField(blank=True, null=True)
-    casnightlv = models.FloatField(blank=True, null=True)
-    loss_ratio = models.FloatField(blank=True, null=True)
-    designle_1 = models.CharField(max_length=-1, blank=True, null=True)
+    eqaebmid = models.CharField(max_length=255, blank=True, null=True)
+    com_loss_r = models.FloatField(blank=True, null=True)
+    res_loss_r = models.FloatField(blank=True, null=True)
+    daytime_in = models.FloatField(blank=True, null=True)
+    daytime_de = models.FloatField(blank=True, null=True)
+    nighttime_field = models.FloatField(db_column='nighttime_', blank=True, null=True)  # Field renamed because it ended with '_'.
+    nighttim_1 = models.FloatField(blank=True, null=True)
     wkb_geometry = GeometryField(blank=True, null=True)
 
     class Meta:
