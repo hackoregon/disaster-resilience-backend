@@ -195,3 +195,7 @@ LOGGING = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 ENABLE_ADMIN_INTERFACE = False
+
+settings_dir = os.path.dirname(__file__)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+JSONFILES_FOLDER = os.path.join(PROJECT_ROOT, 'json_files/')

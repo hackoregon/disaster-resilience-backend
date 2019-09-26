@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from django.http import JsonResponse, HttpResponseServerError, HttpResponse
-
+from rest_framework import viewsets, generics
+from django.http import JsonResponse
 from api.models import preexisting_models
 from api import serializers
-
+from backend.settings import JSONFILES_FOLDER
+import json
 
 class NeighborhoodUnitsSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -28,7 +27,7 @@ class ElectricalTransmissionStructuresSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.ElectricalTransmissionStructures.objects.all()
     serializer_class = serializers.ElectricalTransmissionStructuresSerializer
-    
+
 
 class HydrantsSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -48,7 +47,7 @@ class JurisdictionsSet(viewsets.ReadOnlyModelViewSet):
 
 class QuakeLossViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    DOGAMI 2018 data indicating quake damages depending on 
+    DOGAMI 2018 data indicating quake damages depending on
 	the type of quake (CSZ or PHF) and dry or wet conditions.
 	The data can be viewed by Jurisdiction or Portland Neighborhood
     """
@@ -188,7 +187,7 @@ class CensusBgAoiSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.CensusBgAoi.objects.all()
     serializer_class = serializers.CensusBgAoiSerializer
-	
+
 class AddressSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows AddressSet to be viewed or listed.
@@ -202,7 +201,7 @@ class FireStaSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = preexisting_models.FireSta.objects.all()
     serializer_class = serializers.FireStaSerializer
-	
+
 class SchoolsSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows Schools to be viewed or listed.
@@ -283,9 +282,27 @@ class DisasterNeighborhoodGridSet(viewsets.ReadOnlyModelViewSet):
         qs = qs.filter(y_simple=rounded_lat)
         return qs
 
-class AebmResultsViewSet(viewsets.ReadOnlyModelViewSet):
+class AebmFilterResultsViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that shows disaster information per neighborhood
     """
     queryset = preexisting_models.AebmResults.objects.all()
     serializer_class = serializers.AebmResultsSerializer
+
+
+class AebmResultsViewSet(viewsets.ViewSetMixin, generics.ListAPIView):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+
+    pagination_class = None
+
+    def get_queryset(self):
+        pass
+
+
+    def list(self, request, *args, **kwargs):
+        with open(JSONFILES_FOLDER+'aebm_results_2019_09_25.json') as json_file:
+            data = json.load(json_file)
+            response = JsonResponse(data)
+            return response
