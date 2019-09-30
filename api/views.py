@@ -289,6 +289,13 @@ class AebmFilterResultsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = preexisting_models.AebmResults.objects.all()
     serializer_class = serializers.AebmResultsSerializer
 
+class OptimizedAebmFilterResultsViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    API endpoint that shows disaster information per neighborhood
+    """
+    queryset = preexisting_models.AebmResults.objects.all()
+    serializer_class = serializers.OptimizedAebmResultsSerializer
+
 
 class AebmResultsViewSet(viewsets.ViewSetMixin, generics.ListAPIView):
     """

@@ -216,3 +216,11 @@ class AebmResultsSerializer(GeoFeatureModelSerializer):
         model = preexisting_models.AebmResults
         fields = '__all__'
         geo_field = 'wkb_geometry'
+
+class OptimizedAebmResultsSerializer(serializers.Serializer):
+    class Meta:
+        model = preexisting_models.AebmResults
+        fields = '__all__'
+        geo_field = 'wkb_geometry'
+        read_only_fields = fields
+        
