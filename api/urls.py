@@ -34,7 +34,6 @@ router.register(r'DisasterNeighborhoodView', views.DisasterNeighborhoodViewSet)
 router.register(r'DisasterNeighborhoodGrid', views.DisasterNeighborhoodGridSet)
 router.register(r'AebmResults', views.AebmResultsViewSet, base_name='api/AebmResults')
 router.register(r'AebmFilterResults', views.AebmFilterResultsViewSet, base_name='api/AebmFilterResults')
-router.register(r'OptimizedAebmFilterResults', views.OptimizedAebmFilterResultsViewSet, base_name='api/OptimizedAebmFilterResults')
 
 #router.register(r'Hydrants', views.HydrantsSet)
 #router.register(r'PointsOfService', views.PointsOfServiceSet)

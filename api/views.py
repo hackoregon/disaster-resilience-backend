@@ -289,13 +289,6 @@ class AebmFilterResultsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = preexisting_models.AebmResults.objects.all()
     serializer_class = serializers.AebmResultsSerializer
 
-class OptimizedAebmFilterResultsViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    API endpoint that shows disaster information per neighborhood
-    """
-    queryset = preexisting_models.AebmResults.objects.all()
-    serializer_class = serializers.OptimizedAebmResultsSerializer
-
 
 class AebmResultsViewSet(viewsets.ViewSetMixin, generics.ListAPIView):
     """
@@ -307,9 +300,8 @@ class AebmResultsViewSet(viewsets.ViewSetMixin, generics.ListAPIView):
     def get_queryset(self):
         pass
 
-
     def list(self, request, *args, **kwargs):
-        with open(JSONFILES_FOLDER+'aebm_results_2019_09_25.json') as json_file:
+        with open(JSONFILES_FOLDER+'aebm_loss_casualties_results.json') as json_file:
             data = json.load(json_file)
             response = JsonResponse(data)
             return response
