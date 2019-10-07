@@ -309,7 +309,7 @@ class AebmResultsViewSet(viewsets.ViewSetMixin, generics.ListAPIView):
 
 
     def list(self, request, *args, **kwargs):
-        with open(JSONFILES_FOLDER+'aebm_results_2019_09_25.json') as json_file:
+        with open(JSONFILES_FOLDER + 'aebm_loss_casualties_2019-09-30.json') as json_file:
             data = json.load(json_file)
             response = JsonResponse(data)
             return response
