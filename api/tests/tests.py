@@ -3,6 +3,7 @@ from api.models import preexisting_models
 from rest_framework.test import APIClient
 from rest_framework import status
 
+
 # Django, Writing and Running Unit Tests: https://docs.djangoproject.com/en/2.0/topics/testing/overview/
 # Django, Automated Unit Testing Tutorial: https://docs.djangoproject.com/en/2.0/intro/tutorial05/
 
@@ -69,3 +70,13 @@ class POIEndpointTestCase(TestCase):
     def test_detail_response(self):
         response = self.client.get('/disaster-resilience/api/POI/BEECN1/')
         assert response.status_code == status.HTTP_200_OK
+
+class AebmResultsEndpointTestCase(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+    def test_list_response(self):
+        response = self.client.get('/disaster-resilience/api/AebmResults/')
+        assert response.status_code == status.HTTP_200_OK        
+    # def test_detail_response(self):
+    #     response = self.client.get('/disaster-resilience/api/AebmResults/2525/')
+    #     assert response.status_code == status.HTTP_200_OK

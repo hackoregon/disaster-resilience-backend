@@ -6,13 +6,24 @@ if [ $# == 0 ]; then usage; fi
 while getopts ":dp" opt; do
     case "$opt" in
         d)
-          docker-compose -f development-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh api_development -p 8000
+          #docker-compose -f production-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh disaster-resilience-service  
+          docker-compose -f development-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh api_development
           ;;
         p)
-          docker-compose -f production-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh $DOCKER_SERVICE -p 8000
+          docker-compose -f production-docker-compose.yml run --entrypoint /code/bin/test-entrypoint.sh disaster-resilience-service  
           ;;
         *)
           usage
           ;;
     esac
 done
+
+# fix ownership
+echo "Fixing ownership on Linux"
+if [ `uname -s` = "Linux" ]
+then
+  ls -l
+  echo "sudo chown -R `id -u $USER`:`id -g $USER` ."
+  sudo chown -R `id -u $USER`:`id -g $USER` .
+  ls -l
+fi
